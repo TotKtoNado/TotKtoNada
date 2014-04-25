@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Agent.cs" />
+    <Compile Include="AgentEnv.cs" />
     <Compile Include="Board.cs" />
     <Compile Include="Coordinates.cs" />
     <Compile Include="DummyAgent.cs" />
