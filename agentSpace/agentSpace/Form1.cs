@@ -12,10 +12,12 @@ namespace agentSpace
 {
     public partial class mainForm : Form
     {
+        private Board board;
         public mainForm()
         {
             InitializeComponent();
-           // Board phirexia = new Board(ref Field, ref list);
+            board = new Board(ref Field);
+            board.createDummy1();
            // Agent bill1 = new DummyAgent(0.5f,0.5f,0.01f);
            // Agent bill2 = new DummyAgent(0.5f,0.5f,0.005f);
             //Coordinates s = new Coordinates(0.2f, 0.3f) - new Coordinates(0.1f, 085f);
@@ -40,17 +42,17 @@ namespace agentSpace
             //{
             //    agent.draw(e);
             //}
+            board.drawAll(e);
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            //foreach (Agent ag in list)
-            //{
-            //    ag.doSomething();
-            //}
+
+            board.launchAgents();
+
             label1.Text = "";
             //label1.Text = label1.Text + "\nbill.getCoord() : " + list[0].getCoord().x.ToString() + " ; " + list[0].getCoord().y.ToString();
-
+            //board.drawAll(e);
             Field.Refresh();
         }
     }
@@ -58,7 +60,7 @@ namespace agentSpace
 
     public class Element
     {
-        public void draw(PaintEventArgs e)
+        public virtual void draw(PaintEventArgs e)
         {
         }
     }

@@ -15,6 +15,7 @@ namespace agentSpace
 
     public class Agent
     {
+        protected static Random randGen = new Random();
         private AgentEnv env;
 
         public Agent(ref AgentEnv env_)
@@ -22,10 +23,11 @@ namespace agentSpace
             env = env_;
         }
 
+
+
         //Functions that must be written for agents
         virtual public void doSomething () {
         }
-
 
 
         //Interface for Agents

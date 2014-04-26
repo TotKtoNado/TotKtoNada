@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace agentSpace
 { 
@@ -15,6 +16,19 @@ namespace agentSpace
         private Agent agent;
         private static Random randGen = new Random();
         private string agentType;
+
+        
+        public override void draw(System.Windows.Forms.PaintEventArgs e)
+        {
+            int x = (int)(coord.x * (610));
+            int y = (int)(coord.y * (250));
+            Pen p = new Pen(Color.Black,3);
+            e.Graphics.DrawEllipse(p, x, y, 5, 5);
+            
+           //dispose pen and graphics object
+            p.Dispose();
+          
+        }
 
         public AgentEnv()
         {
@@ -62,7 +76,7 @@ namespace agentSpace
 
         public void doSomething() // дописать
         {
-
+            agent.doSomething();
         }
 
         

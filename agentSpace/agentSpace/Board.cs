@@ -23,6 +23,14 @@ namespace agentSpace
             agentListm = new List<AgentEnv>();
         }
 
+        public void drawAll(PaintEventArgs e)
+        {
+            foreach (AgentEnv ag in agentListm)
+            {
+                ag.draw(e);
+            }
+        }
+
         public void addAgent(ref AgentEnv ag)
         {
             Board me = this;
