@@ -12,6 +12,7 @@ namespace agentSpace
         private Coordinates coord;
         private float speed;
         private Board server;
+        private Agent agent;
         private static Random randGen = new Random();
         private string agentType;
 
@@ -39,6 +40,11 @@ namespace agentSpace
             return server;
         }
 
+        public void setAgent(ref Agent ag)
+        {
+            agent = ag;
+        }
+
         public void setCoord(Coordinates coord_)
         {
             coord = coord_;
@@ -58,6 +64,8 @@ namespace agentSpace
         {
 
         }
+
+        
 
 
     }

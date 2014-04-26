@@ -48,6 +48,7 @@
     <Compile Include="AgentEnv.cs" />
     <Compile Include="Board.cs" />
     <Compile Include="Coordinates.cs" />
+    <Compile Include="Dummy1.cs" />
     <Compile Include="DummyAgent.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

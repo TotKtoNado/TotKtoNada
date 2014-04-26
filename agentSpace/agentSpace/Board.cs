@@ -23,7 +23,7 @@ namespace agentSpace
             agentListm = new List<AgentEnv>();
         }
 
-        public void addAgentm(ref AgentEnv ag)
+        public void addAgent(ref AgentEnv ag)
         {
             Board me = this;
             agentListm.Add(ag);
@@ -70,5 +70,14 @@ namespace agentSpace
 
         //agentEnv functions
 
+
+        //Functions for user
+        public void createDummy1()
+        {
+            AgentEnv env = new AgentEnv(0.5f, 0.6f, 0.02f, "Dummy");
+            Agent bill = new Dummy1(ref env);
+            env.setAgent(ref bill);
+            addAgent(ref env);
+        }
     }
 }

@@ -27,6 +27,7 @@ namespace agentSpace
         }
 
 
+
         //Interface for Agents
 
         //make step in direction 'vec', using 'speedPerc' of your speed
@@ -44,5 +45,6 @@ namespace agentSpace
         {
             return env.getCoord();
         }
+
     }
 }
