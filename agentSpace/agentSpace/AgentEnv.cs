@@ -13,12 +13,11 @@ namespace agentSpace
         private Coordinates coord;
         private float speed;
         private float viewRadius;
-        private float drawRad; // For drawing
 
         private Board server;
         private Agent agent;
         private static Random randGen = new Random();
-        private string agentType;
+        private AgentInfo info;
 
      
         public AgentEnv()
@@ -29,24 +28,24 @@ namespace agentSpace
             speed = 0.02f;
         }
 
-        public AgentEnv(float x, float y, float speed_, float radius, string agType)
+        public AgentEnv(float x, float y, float speed_, float radius, AgentInfo info_)
         {
             coord = new Coordinates(x, y);
             speed = speed_;
             viewRadius = radius;
-            drawRad = 0.02f;
-            agentType = agType;
+            info = info_;
         }
 
         //drawings
         public override void draw(System.Windows.Forms.PaintEventArgs e)
         {
+            float drawRad = info.agentRadius;
             int x = (int)((coord.x - drawRad/2.0f)* e.ClipRectangle.Width ) ;
             int y = (int)((coord.y -  drawRad/2.0f)* e.ClipRectangle.Height );
             int w = (Int32)(drawRad * e.ClipRectangle.Width);
             int h = (Int32)(drawRad * e.ClipRectangle.Height);
             Rectangle rec = new Rectangle(x, y, w, h);
-            Pen p = new Pen(Color.Black, 3);
+            Pen p = new Pen(info.agentColor, 3);
             e.Graphics.DrawEllipse(p, rec);
 
             //dispose pen and graphics object
@@ -72,7 +71,7 @@ namespace agentSpace
 
         public void setCoord(Coordinates coord_)
         {
-            coord = coord_;
+            coord.safeAssign(coord_.x,coord_.y);
         }
 
         public Coordinates getCoord()

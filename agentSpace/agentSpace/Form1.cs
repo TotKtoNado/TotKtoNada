@@ -17,13 +17,17 @@ namespace agentSpace
         {
             InitializeComponent();
             board = new Board(ref Field);
-            board.createDummy1();
+            Coordinates pos = new Coordinates(0.3f, 0.4f);
+            AgentEnv bill1 = board.createDummy1();
+            AgentEnv bill2 = board.createDummy1();
+            AgentEnv bill3 = board.createDummy1();
+            bill1.setCoord(pos);
+            bill2.setCoord(pos* 2.0f);
+            bill3.setCoord(pos * 0.75f);
         }
 
 
         //handlers
-        //List<Agent> list = new List<Agent>();
-       // List <AgentEnv> listm = new List<AgentEnv>();
         private void Field_Click(object sender, EventArgs e)
         {
 

@@ -102,11 +102,13 @@ namespace agentSpace
         //Functions for user
         public AgentEnv createDummy1()
         {
-            AgentEnv env = new AgentEnv(0.5f, 0.5f, 0.02f, 0.1f, "Dummy");
+            AgentInfo info = new AgentInfo (Color.Green, 0.01f, "Dummy");
+            AgentEnv env = new AgentEnv(0.5f, 0.5f, 0.02f, 0.1f, info);
             Agent bill = new Dummy1(ref env);
             env.setAgent(ref bill);
             addAgent(ref env);
             return env;
         }
+
     }
 }

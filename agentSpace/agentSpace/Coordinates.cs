@@ -25,6 +25,13 @@ namespace agentSpace
             return this;
         }
 
+        public Coordinates toDiaposon()
+        {
+            x = Math.Max(Math.Min(x, 1.0f), 0.0f);
+            y = Math.Max(Math.Min(y, 1.0f), 0.0f);
+            return this;
+        }
+
 
         public static Coordinates operator +(Coordinates a, Coordinates b)
         {

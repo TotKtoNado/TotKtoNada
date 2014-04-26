@@ -10,9 +10,19 @@ using System.Windows.Forms;
 
 namespace agentSpace
 {
-    public struct agentInfo
+    public struct AgentInfo
     {
-        Color agentColor;
+        public Color agentColor;
+        public float agentRadius;
+        public string agentType;
+
+        public AgentInfo(Color col, float rad, string agType)
+        {
+            agentColor = col;
+            agentRadius = rad;
+            agentType = agType;
+        }
+        
     }
 
 
