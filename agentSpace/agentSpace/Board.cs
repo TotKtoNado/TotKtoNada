@@ -42,12 +42,11 @@ namespace agentSpace
             Brush br= new SolidBrush(Color.White);
             foreach (AgentEnv ag in agentListm)
             {
-                rec.X = (Int32)((ag.getCoord().x - ag.getRadius()/2.0f) * (float)e.ClipRectangle.Width);
-                rec.Y = (Int32)((ag.getCoord().y - ag.getRadius() / 2.0f) * (float)e.ClipRectangle.Height);
+                rec.X = (Int32)((ag.getCoord().x - (ag.getRadius()/2.0f)) * (float)e.ClipRectangle.Width);
+                rec.Y = (Int32)((ag.getCoord().y - (ag.getRadius() / 2.0f)) * (float)e.ClipRectangle.Height);
                 rec.Width = (Int32)(ag.getRadius() * ((float)e.ClipRectangle.Width));
                 rec.Height = (Int32)(ag.getRadius() * ((float)e.ClipRectangle.Height));
-                //Console.WriteLine("x " + rec.X.ToString() + " y " + rec.Y.ToString() + " W " + rec.Width.ToString() + " H " + rec.Height.ToString());
-                //Console.WriteLine("x " + rec.X.ToString() + " y " + rec.Y.ToString() + " W " + ag.getRadius().ToString() + " H " + ag.getRadius().ToString());
+                Console.WriteLine("x " + rec.X.ToString() + " y " + rec.Y.ToString() + " W " + rec.Width.ToString() + " H " + rec.Height.ToString());
                 e.Graphics.FillEllipse(br, rec);
             }
         }
@@ -103,7 +102,7 @@ namespace agentSpace
         //Functions for user
         public void createDummy1()
         {
-            AgentEnv env = new AgentEnv(0.5f, 0.6f, 0.02f, 0.1f, "Dummy");
+            AgentEnv env = new AgentEnv(0.5f, 0.5f, 0.02f, 0.1f, "Dummy");
             Agent bill = new Dummy1(ref env);
             env.setAgent(ref bill);
             addAgent(ref env);

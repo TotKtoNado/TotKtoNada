@@ -15,7 +15,7 @@ namespace agentSpace
         public override void doSomething()
         {
             Coordinates vec = new Coordinates(0.5f,0.5f);
-            //makeStep(vec, 1.0f);
+            makeStep(vec, 1.0f);
         }
     }
 }
