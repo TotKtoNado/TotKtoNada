@@ -13,21 +13,36 @@ namespace agentSpace
     public class Board
     {
         private PictureBox agentWorld;
-        private List<Agent> agentList;
         private const float touchDist = 0.01f;
 
+        //old
+        private List<Agent> agentList;
+        //new
+        private List<AgentEnv> agentListm;
+        
+        //old
         public Board(ref PictureBox pic, ref List<Agent> list)
         {
             agentWorld = pic;
             agentList = list;
+            agentListm = new List<AgentEnv>();
         }
 
+        //old
         public void addAgent(ref Agent ag)
         {
             Board me = this;
             agentList.Add (ag);
             ag.setBoard(ref me);
             return; 
+        }
+        //new
+        public void addAgentm(ref AgentEnv ag)
+        {
+            Board me = this;
+            agentListm.Add(ag);
+            ag.setBoard(ref me);
+            return;
         }
 
         //Let each agent do 1 action
@@ -75,5 +90,8 @@ namespace agentSpace
             Coordinates pos = client.getCoord();
             return (isPathLegal(pos, point) && ((pos - point).norm() < touchDist));
         }
+
+        //agentEnv functions
+
     }
 }

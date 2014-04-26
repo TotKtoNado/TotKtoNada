@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace agentSpace
 { 
-    class AgentEnv
+    public class AgentEnv : Element
     //This class stores properties of agent
     {
-        Coordinates coord;
-        float speed;
-        Board server;
-        static Random randGen = new Random();
+        private Coordinates coord;
+        private float speed;
+        private Board server;
+        private static Random randGen = new Random();
 
         public AgentEnv()
         {
@@ -26,6 +26,11 @@ namespace agentSpace
         {
             coord = new Coordinates(x, y);
             speed = speed_;
+        }
+
+        public void setBoard(ref Board ser)
+        {
+            server = ser;
         }
     }
 }
