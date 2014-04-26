@@ -100,12 +100,13 @@ namespace agentSpace
 
 
         //Functions for user
-        public void createDummy1()
+        public AgentEnv createDummy1()
         {
             AgentEnv env = new AgentEnv(0.5f, 0.5f, 0.02f, 0.1f, "Dummy");
             Agent bill = new Dummy1(ref env);
             env.setAgent(ref bill);
             addAgent(ref env);
+            return env;
         }
     }
 }
