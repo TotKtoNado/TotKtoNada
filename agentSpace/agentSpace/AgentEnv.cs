@@ -13,6 +13,7 @@ namespace agentSpace
         private float speed;
         private Board server;
         private static Random randGen = new Random();
+        private string agentType;
 
         public AgentEnv()
         {
@@ -22,15 +23,20 @@ namespace agentSpace
             speed = 0.02f;
         }
 
-        public AgentEnv(float x, float y, float speed_)
+        public AgentEnv(float x, float y, float speed_, string agType)
         {
             coord = new Coordinates(x, y);
             speed = speed_;
+            agentType = agType;
         }
 
         public void setBoard(ref Board ser)
         {
             server = ser;
+        }
+
+        public Board getBoard () {
+            return server;
         }
 
         public void setCoord(Coordinates coord_)
@@ -41,6 +47,11 @@ namespace agentSpace
         public Coordinates getCoord()
         {
             return coord;
+        }
+
+        public float getSpeed()
+        {
+            return speed;
         }
 
         public void doSomething() // дописать

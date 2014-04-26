@@ -22,5 +22,27 @@ namespace agentSpace
             env = env_;
         }
 
+        //Functions that must be written for agents
+        virtual public void doSomething () {
+        }
+
+
+        //Interface for Agents
+
+        //make step in direction 'vec', using 'speedPerc' of your speed
+        protected bool makeStep(Coordinates vec, float speedPerc)
+        {
+            return env.getBoard().askStep(vec, speedPerc, ref env);
+        }
+
+        protected float getMySpeed()
+        {
+            return env.getSpeed();
+        }
+
+        protected Coordinates getMyPos()
+        {
+            return env.getCoord();
+        }
     }
 }
