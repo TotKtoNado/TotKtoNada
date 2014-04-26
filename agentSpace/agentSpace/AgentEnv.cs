@@ -12,24 +12,14 @@ namespace agentSpace
     {
         private Coordinates coord;
         private float speed;
+        private float viewRadius;
+
         private Board server;
         private Agent agent;
         private static Random randGen = new Random();
         private string agentType;
 
-        
-        public override void draw(System.Windows.Forms.PaintEventArgs e)
-        {
-            int x = (int)(coord.x * (610));
-            int y = (int)(coord.y * (250));
-            Pen p = new Pen(Color.Black,3);
-            e.Graphics.DrawEllipse(p, x, y, 5, 5);
-            
-           //dispose pen and graphics object
-            p.Dispose();
-          
-        }
-
+     
         public AgentEnv()
         {
             float x = (float) randGen.NextDouble();
@@ -38,13 +28,29 @@ namespace agentSpace
             speed = 0.02f;
         }
 
-        public AgentEnv(float x, float y, float speed_, string agType)
+        public AgentEnv(float x, float y, float speed_, float radius, string agType)
         {
             coord = new Coordinates(x, y);
             speed = speed_;
+            viewRadius = radius;
             agentType = agType;
         }
 
+        //drawings
+        public override void draw(System.Windows.Forms.PaintEventArgs e)
+        {
+            int x = (int)(coord.x * e.ClipRectangle.Width);
+            int y = (int)(coord.y * e.ClipRectangle.Height);
+            Pen p = new Pen(Color.Black, 3);
+            e.Graphics.DrawEllipse(p, x, y, 5, 5);
+
+            //dispose pen and graphics object
+            p.Dispose();
+
+        }
+
+
+        //setters getters
         public void setBoard(ref Board ser)
         {
             server = ser;
@@ -72,6 +78,11 @@ namespace agentSpace
         public float getSpeed()
         {
             return speed;
+        }
+
+        public float getRadius()
+        {
+            return viewRadius;
         }
 
         public void doSomething() // дописать

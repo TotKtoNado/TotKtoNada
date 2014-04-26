@@ -18,13 +18,6 @@ namespace agentSpace
             InitializeComponent();
             board = new Board(ref Field);
             board.createDummy1();
-           // Agent bill1 = new DummyAgent(0.5f,0.5f,0.01f);
-           // Agent bill2 = new DummyAgent(0.5f,0.5f,0.005f);
-            //Coordinates s = new Coordinates(0.2f, 0.3f) - new Coordinates(0.1f, 085f);
-            //Console.WriteLine(s.x);
-            //Console.WriteLine(s.y);
-            //phirexia.addAgent(ref bill1);
-            //phirexia.addAgent(ref bill2);
         }
 
 
