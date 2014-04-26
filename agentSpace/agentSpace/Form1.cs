@@ -13,12 +13,13 @@ namespace agentSpace
     public partial class mainForm : Form
     {
         private Board board;
+        AgentEnv bill1;
         public mainForm()
         {
             InitializeComponent();
             board = new Board(ref Field);
             Coordinates pos = new Coordinates(0.3f, 0.4f);
-            AgentEnv bill1 = board.createDummy1();
+            bill1 = board.createDummy1();
             AgentEnv bill2 = board.createDummy1();
             AgentEnv bill3 = board.createDummy1();
             bill1.setCoord(pos);
@@ -30,7 +31,6 @@ namespace agentSpace
         //handlers
         private void Field_Click(object sender, EventArgs e)
         {
-
         }
 
         private void Field_Paint(object sender, PaintEventArgs e)

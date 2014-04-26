@@ -15,14 +15,20 @@ namespace agentSpace
         private PictureBox agentWorld;
         private const float touchDist = 0.01f;
         private List<AgentEnv> agentListm;
+        private Int32 generatorID;
         
-        //old
         public Board(ref PictureBox pic)
         {
+            generatorID = 0;
             agentWorld = pic;
             agentListm = new List<AgentEnv>();
         }
 
+        private Int32 generateID()
+        {
+            generatorID++;
+            return generatorID;
+        }
 
 
         //drawings
@@ -57,6 +63,11 @@ namespace agentSpace
             agentListm.Add(ag);
             ag.setBoard(ref me);
             return;
+        }
+
+        public void removeAgent(ref AgentEnv ag)
+        {
+            agentListm.Remove(ag);
         }
 
         public void launchAgents()
@@ -96,13 +107,14 @@ namespace agentSpace
             return (isPathLegal(pos, point) && ((pos - point).norm() < touchDist));
         }
 
+        
         //agentEnv functions
 
 
         //Functions for user
         public AgentEnv createDummy1()
         {
-            AgentInfo info = new AgentInfo (Color.Green, 0.01f, "Dummy");
+            AgentInfo info = new AgentInfo (Color.Green, 0.01f, "Dummy",generateID());
             AgentEnv env = new AgentEnv(0.5f, 0.5f, 0.02f, 0.1f, info);
             Agent bill = new Dummy1(ref env);
             env.setAgent(ref bill);

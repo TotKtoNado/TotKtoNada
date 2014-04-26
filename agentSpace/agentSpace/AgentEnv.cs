@@ -89,6 +89,13 @@ namespace agentSpace
             return viewRadius;
         }
 
+        public AgentCutaway getCutaway()
+        {
+            AgentCutaway visit = new AgentCutaway(info.agentType, info.agentID, getCoord());
+            return visit;
+        }
+
+
         public void doSomething() // дописать
         {
             agent.doSomething();
