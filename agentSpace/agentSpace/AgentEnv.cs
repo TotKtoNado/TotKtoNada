@@ -84,7 +84,7 @@ namespace agentSpace
             return speed;
         }
 
-        public float getRadius()
+        public float getViewRadius()
         {
             return viewRadius;
         }
@@ -94,7 +94,6 @@ namespace agentSpace
             AgentCutaway visit = new AgentCutaway(info.agentType, info.agentID, getCoord());
             return visit;
         }
-
 
         public void doSomething() // дописать
         {

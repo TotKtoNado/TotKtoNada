@@ -48,10 +48,10 @@ namespace agentSpace
             Brush br= new SolidBrush(Color.White);
             foreach (AgentEnv ag in agentListm)
             {
-                rec.X = (Int32)((ag.getCoord().x - (ag.getRadius()/2.0f)) * (float)e.ClipRectangle.Width);
-                rec.Y = (Int32)((ag.getCoord().y - (ag.getRadius() / 2.0f)) * (float)e.ClipRectangle.Height);
-                rec.Width = (Int32)(ag.getRadius() * ((float)e.ClipRectangle.Width));
-                rec.Height = (Int32)(ag.getRadius() * ((float)e.ClipRectangle.Height));
+                rec.X = (Int32)((ag.getCoord().x - (ag.getViewRadius()/2.0f)) * (float)e.ClipRectangle.Width);
+                rec.Y = (Int32)((ag.getCoord().y - (ag.getViewRadius() / 2.0f)) * (float)e.ClipRectangle.Height);
+                rec.Width = (Int32)(ag.getViewRadius() * ((float)e.ClipRectangle.Width));
+                rec.Height = (Int32)(ag.getViewRadius() * ((float)e.ClipRectangle.Height));
                 Console.WriteLine("x " + rec.X.ToString() + " y " + rec.Y.ToString() + " W " + rec.Width.ToString() + " H " + rec.Height.ToString());
                 e.Graphics.FillEllipse(br, rec);
             }
@@ -82,6 +82,12 @@ namespace agentSpace
         {
             return (finish.x < 1.0f && finish.x > 0.0f && finish.y < 1.0f && finish.y > 0.0f);
         }
+
+        private bool canSee (Coordinates start, Coordinates finish) 
+        {
+            return (finish.x < 1.0f && finish.x > 0.0f && finish.y < 1.0f && finish.y > 0.0f);
+        }
+
                 
 
         //Interface elements for agents
@@ -105,6 +111,21 @@ namespace agentSpace
         {
             Coordinates pos = client.getCoord();
             return (isPathLegal(pos, point) && ((pos - point).norm() < touchDist));
+        }
+
+        public List<AgentCutaway> objectsInRange(ref AgentEnv agent)
+        {
+            Coordinates obs = agent.getCoord();
+            List<AgentCutaway> rez = new List<AgentCutaway>();
+            foreach (AgentEnv ag in agentListm)
+            {
+                if ((ag.getCoord() - obs).norm() < agent.getViewRadius() &&
+                      canSee(obs, ag.getCoord()))
+                {
+                    rez.Add(ag.getCutaway());
+                }
+            }
+            return rez;
         }
 
         
