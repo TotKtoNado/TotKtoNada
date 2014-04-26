@@ -13,67 +13,14 @@ using System.Windows.Forms;
 namespace agentSpace
 {
 
-    public class Agent : Element
+    public class Agent
     {
-        protected Coordinates coord;
-        protected float speed;
-        protected Board server;
-        protected static Random  randGen= new Random();
+        private AgentEnv env;
 
-
-        public Agent()
+        public Agent(ref AgentEnv env_)
         {
-            float x = (float) randGen.NextDouble();
-            float y = (float) randGen.NextDouble();
-            coord = new Coordinates(x, y);
-            speed = 0.02f;
+            env = env_;
         }
 
-        public Agent(float x, float y, float speed_)
-        {
-            coord = new Coordinates(x, y);
-            speed = speed_;
-        }
-
-        //general agent functions
-        public void setBoard (ref Board server_) {
-            server = server_;
-        }
-
-        public Coordinates getCoord()
-        {
-            return coord;
-        }
-
-        public float getSpeed()
-        {
-            return speed;
-        }
-
-        public void setCoord(float x, float y)
-        {
-            coord.x = x;
-            coord.y = y;
-        }
-
-        public void setCoord(Coordinates cor)
-        {
-            coord = cor;
-        }
-        //individual agent fuctions
-        new public void draw(PaintEventArgs e)
-        {
-            int x = (int)(coord.x * (e.ClipRectangle.Width));
-            int y = (int)(coord.y * (e.ClipRectangle.Height));
-            Pen p = new Pen(Color.Black, 3);
-            e.Graphics.DrawEllipse(p, x, y, 5, 5);
-             //-----------------------------------------------------
-            //dispose pen and graphics object
-            p.Dispose();
-        }
-      
-        
-        public virtual void doSomething() {}
-        
     }
 }

@@ -32,5 +32,22 @@ namespace agentSpace
         {
             server = ser;
         }
+
+        public void setCoord(Coordinates coord_)
+        {
+            coord = coord_;
+        }
+
+        public Coordinates getCoord()
+        {
+            return coord;
+        }
+
+        public void doSomething() // дописать
+        {
+
+        }
+
+
     }
 }
