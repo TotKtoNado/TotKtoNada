@@ -95,6 +95,16 @@ namespace agentSpace
             return visit;
         }
 
+        public Int32 getID()
+        {
+            return info.agentID;
+        }
+
+        public String getTypeName()
+        {
+            return info.agentType;
+        }
+
         public void doSomething() // дописать
         {
             agent.doSomething();

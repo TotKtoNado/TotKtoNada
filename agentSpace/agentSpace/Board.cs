@@ -88,7 +88,25 @@ namespace agentSpace
             return (finish.x < 1.0f && finish.x > 0.0f && finish.y < 1.0f && finish.y > 0.0f);
         }
 
-                
+        private AgentEnv findAgent ( Int32 id) {
+            return agentListm.Find(
+                delegate(AgentEnv ag)
+                {
+                    return (ag.getID() == id);
+                });
+        }
+
+        private bool canTake(string takerType, string objectType)
+        {
+            switch (takerType)
+            {
+                case "Dummy":
+                    return (objectType == "Lost Girl");
+                default:
+                    return false;
+            }
+        }
+
 
         //Interface elements for agents
         public bool askStep(Coordinates vec, float speedPercent, ref AgentEnv client)
@@ -126,6 +144,19 @@ namespace agentSpace
                 }
             }
             return rez;
+        }
+
+        public bool takeObj(Int32 objId, ref AgentEnv agent)
+        {
+            AgentEnv billy = findAgent(objId);
+            if (canTake(agent.getTypeName(),billy.getTypeName()) &&
+                canTouch(billy.getCoord(), ref agent)) {
+                removeAgent(ref billy);
+                return true;
+            }
+            else {
+                return false;
+            }
         }
 
         
