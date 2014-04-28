@@ -52,7 +52,7 @@ namespace agentSpace
                 rec.Y = (Int32)((ag.getCoord().y - (ag.getViewRadius() / 2.0f)) * (float)e.ClipRectangle.Height);
                 rec.Width = (Int32)(ag.getViewRadius() * ((float)e.ClipRectangle.Width));
                 rec.Height = (Int32)(ag.getViewRadius() * ((float)e.ClipRectangle.Height));
-                Console.WriteLine("x " + rec.X.ToString() + " y " + rec.Y.ToString() + " W " + rec.Width.ToString() + " H " + rec.Height.ToString());
+                //Console.WriteLine("x " + rec.X.ToString() + " y " + rec.Y.ToString() + " W " + rec.Width.ToString() + " H " + rec.Height.ToString());
                 e.Graphics.FillEllipse(br, rec);
             }
         }
@@ -101,7 +101,7 @@ namespace agentSpace
             switch (takerType)
             {
                 case "Dummy":
-                    return (objectType == "Lost Girl");
+                    return (objectType == "Little Girl");
                 default:
                     return false;
             }
@@ -132,22 +132,25 @@ namespace agentSpace
         }
 
         public List<AgentCutaway> objectsInRange(ref AgentEnv agent)
-        {
+        {//Returns list of Agents Cutaways, that asking-agent can see
             Coordinates obs = agent.getCoord();
             List<AgentCutaway> rez = new List<AgentCutaway>();
             foreach (AgentEnv ag in agentListm)
             {
                 if ((ag.getCoord() - obs).norm() < agent.getViewRadius() &&
-                      canSee(obs, ag.getCoord()))
+                      canSee(obs, ag.getCoord()) && 
+                      ag.getID()!=agent.getID())
                 {
+                    //Console.WriteLine("Range = " + (ag.getCoord() - obs).x.ToString() + (ag.getCoord() - obs).y.ToString());
                     rez.Add(ag.getCutaway());
                 }
             }
             return rez;
         }
 
+       
         public bool takeObj(Int32 objId, ref AgentEnv agent)
-        {
+        { //If agent can "take" object and he can touch that object, the object removes from the field
             AgentEnv billy = findAgent(objId);
             if (canTake(agent.getTypeName(),billy.getTypeName()) &&
                 canTouch(billy.getCoord(), ref agent)) {
@@ -173,6 +176,16 @@ namespace agentSpace
             addAgent(ref env);
             return env;
         }
+
+        public AgentEnv createLittleGirl1() {
+            AgentInfo info = new AgentInfo(Color.Pink, 0.005f, "Little Girl", generateID());
+            AgentEnv env = new AgentEnv(0.5f, 0.5f, 0.02f, 0.1f, info);
+            Agent nancy = new LittleGirl1(ref env);
+            env.setAgent(ref nancy);
+            addAgent(ref env);
+            return env;
+        }
+            
 
     }
 }

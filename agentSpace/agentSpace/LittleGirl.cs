@@ -6,14 +6,11 @@ using System.Threading.Tasks;
 
 namespace agentSpace
 {
-    public class DummyAgent : Agent
+    public class LittleGirl : Agent
     {
-        private Coordinates aim;
-
-        public DummyAgent(ref AgentEnv env)
+        public LittleGirl (ref AgentEnv env)
             : base(ref env)
         {
         }
-
     }
 }

@@ -15,7 +15,6 @@ namespace agentSpace
 
     public class Agent
     {
-        protected static Random randGen = new Random();
         private AgentEnv env;
 
         public Agent(ref AgentEnv env_)
@@ -43,9 +42,24 @@ namespace agentSpace
             return env.getSpeed();
         }
 
+        protected bool canTouch(Coordinates pos)
+        {
+            return env.getBoard().canTouch(pos, ref env);
+        }
+
         protected Coordinates getMyPos()
         {
             return env.getCoord();
+        }
+
+        protected List<AgentCutaway> lookAround()
+        {
+            return env.getBoard().objectsInRange(ref env);
+        }
+
+        protected bool grabObject(Int32 objID)
+        {
+            return env.getBoard().takeObj(objID, ref env);
         }
 
     }

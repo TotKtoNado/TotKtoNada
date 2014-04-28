@@ -20,11 +20,13 @@ namespace agentSpace
             board = new Board(ref Field);
             Coordinates pos = new Coordinates(0.3f, 0.4f);
             bill1 = board.createDummy1();
-            AgentEnv bill2 = board.createDummy1();
-            AgentEnv bill3 = board.createDummy1();
+            //AgentEnv bill2 = board.createDummy1();
+            //AgentEnv bill3 = board.createDummy1();
+            AgentEnv nancy = board.createLittleGirl1();
             bill1.setCoord(pos);
-            bill2.setCoord(pos* 2.0f);
-            bill3.setCoord(pos * 0.75f);
+            //bill2.setCoord(pos* 2.0f);
+            //bill3.setCoord(pos * 0.75f);
+            nancy.setCoord(new Coordinates(0.9f, 0.8f));
         }
 
 

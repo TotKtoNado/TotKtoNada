@@ -54,7 +54,7 @@ namespace agentSpace
 
         public Coordinates normalize()
         {
-            if (x == 0 && y == 0)
+            if (x == 0.0f && y == 0.0f)
             {
                 return this;
             }
