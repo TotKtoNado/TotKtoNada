@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace agentSpace
 {
@@ -22,7 +23,14 @@ namespace agentSpace
         {
             if (!grabObjectsAround())
             {
-                makeStep(new Coordinates(0.5f, 0.5f), 1.0f);
+                if (canTouch(aim))
+                {
+                    genAim();
+                }
+                else
+                {
+                    moveToAim();
+                }
             }
         }
 
@@ -30,32 +38,29 @@ namespace agentSpace
             List<AgentCutaway> cuts = lookAround();
             bool found = false;
             foreach (AgentCutaway cut in cuts) {
+                Console.WriteLine(cuts.Count.ToString());
                 if (cut.agentType == "Little Girl")
                 {
-                    Console.WriteLine("found girl");
-                    aim = cut.pos;
-                    //found = grabObject(cut.agentID);
-                    //Console.WriteLine(found);
+                   // aim = cut.pos;
+                    changeMyColor(Color.Blue);
+                    aim = getMyPos(); 
+                    found = grabObject(cut.agentID);
                     return found;
                 }
             }
-            if (canTouch(aim))
-            {
-                genAim();
-            }
-            moveToAim();
             return false;
         }
 
 
         private void genAim() {
             aim.x = (float)randGen.NextDouble();
-            aim.x = (float)randGen.NextDouble();
+            aim.y = (float)randGen.NextDouble();
         }
         private void moveToAim()
         {
             Coordinates vec = aim - getMyPos();
-            makeStep(vec.normalize(), 1.0f);
+            makeStep(vec, 1.0f);
+            //makeStep(new Coordinates(1.0f,1.0f),1.0f);
         }
     }
 }

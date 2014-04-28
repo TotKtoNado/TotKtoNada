@@ -62,5 +62,10 @@ namespace agentSpace
             return env.getBoard().takeObj(objID, ref env);
         }
 
+        protected void changeMyColor(Color col)
+        {
+            env.getBoard().changeAgentColor(col, ref env);
+        }
+
     }
 }

@@ -105,6 +105,11 @@ namespace agentSpace
             return info.agentType;
         }
 
+        public void setColor(Color col)
+        {
+            info.agentColor = col;
+        }
+
         public void doSomething() // дописать
         {
             agent.doSomething();

@@ -48,10 +48,10 @@ namespace agentSpace
             Brush br= new SolidBrush(Color.White);
             foreach (AgentEnv ag in agentListm)
             {
-                rec.X = (Int32)((ag.getCoord().x - (ag.getViewRadius()/2.0f)) * (float)e.ClipRectangle.Width);
-                rec.Y = (Int32)((ag.getCoord().y - (ag.getViewRadius() / 2.0f)) * (float)e.ClipRectangle.Height);
-                rec.Width = (Int32)(ag.getViewRadius() * ((float)e.ClipRectangle.Width));
-                rec.Height = (Int32)(ag.getViewRadius() * ((float)e.ClipRectangle.Height));
+                rec.X = (Int32)((ag.getCoord().x - (ag.getViewRadius())) * (float)e.ClipRectangle.Width);
+                rec.Y = (Int32)((ag.getCoord().y - (ag.getViewRadius())) * (float)e.ClipRectangle.Height);
+                rec.Width = (Int32)(ag.getViewRadius()*2f * ((float)e.ClipRectangle.Width));
+                rec.Height = (Int32)(ag.getViewRadius() *2f* ((float)e.ClipRectangle.Height));
                 //Console.WriteLine("x " + rec.X.ToString() + " y " + rec.Y.ToString() + " W " + rec.Width.ToString() + " H " + rec.Height.ToString());
                 e.Graphics.FillEllipse(br, rec);
             }
@@ -147,19 +147,24 @@ namespace agentSpace
             }
             return rez;
         }
-
        
         public bool takeObj(Int32 objId, ref AgentEnv agent)
         { //If agent can "take" object and he can touch that object, the object removes from the field
             AgentEnv billy = findAgent(objId);
             if (canTake(agent.getTypeName(),billy.getTypeName()) &&
                 canTouch(billy.getCoord(), ref agent)) {
-                removeAgent(ref billy);
+                //removeAgent(ref billy);
+                billy.setColor(Color.Black);
                 return true;
             }
             else {
                 return false;
             }
+        }
+
+        public void changeAgentColor(Color col, ref AgentEnv agent)
+        {
+            agent.setColor(col);
         }
 
         
