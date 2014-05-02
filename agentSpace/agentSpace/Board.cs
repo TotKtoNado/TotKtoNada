@@ -13,15 +13,17 @@ namespace agentSpace
     public class Board
     {
         private PictureBox agentWorld;
-        private const float touchDist = 0.01f;
+        private const float touchDist = 0.002f;
         private List<AgentEnv> agentListm;
         private Int32 generatorID;
-        
-        public Board(ref PictureBox pic)
+        private CheckBox showRadius;
+
+        public Board(ref PictureBox pic, ref CheckBox showRad)
         {
             generatorID = 0;
             agentWorld = pic;
             agentListm = new List<AgentEnv>();
+            showRadius = showRad;
         }
 
         private Int32 generateID()
@@ -34,7 +36,10 @@ namespace agentSpace
         //drawings
         public void drawAll(PaintEventArgs e)
         {
-            drawAllRadius(e);
+            if (showRadius.Checked)
+            {
+                drawAllRadius(e);
+            }
             foreach (AgentEnv ag in agentListm)
             {
                 ag.draw(e);
@@ -43,7 +48,7 @@ namespace agentSpace
 
         private void drawAllRadius(PaintEventArgs e)
         {
-            e.Graphics.Clear(Color.Gray);
+            e.Graphics.Clear(Color.LightGray);
             Rectangle rec = new Rectangle();
             Brush br= new SolidBrush(Color.White);
             foreach (AgentEnv ag in agentListm)
@@ -96,15 +101,13 @@ namespace agentSpace
                 });
         }
 
-        private bool canTake(string takerType, string objectType)
+        private bool canTake(string takerState, string objectState)
         {
-            switch (takerType)
+            if (takerState == "Searching" && objectState == "Find me")
             {
-                case "Dummy":
-                    return (objectType == "Little Girl");
-                default:
-                    return false;
+                return true;
             }
+            return false;
         }
 
 
@@ -124,7 +127,7 @@ namespace agentSpace
                 return false;
             }
         }
-
+ 
         public bool canTouch(Coordinates point, ref AgentEnv client)
         {
             Coordinates pos = client.getCoord();
@@ -151,20 +154,29 @@ namespace agentSpace
         public bool takeObj(Int32 objId, ref AgentEnv agent)
         { //If agent can "take" object and he can touch that object, the object removes from the field
             AgentEnv billy = findAgent(objId);
-            if (canTake(agent.getTypeName(),billy.getTypeName()) &&
-                canTouch(billy.getCoord(), ref agent)) {
+            //Console.WriteLine("can take = " + canTake(agent.getState(), billy.getState()).ToString());
+            //Console.WriteLine("can touch = " + canTouch(billy.getCoord(), ref agent));
+            if (canTake(agent.getState(), billy.getState()) &&
+                canTouch(billy.getCoord(), ref agent))
+            {
+                //Console.WriteLine("Little girl = " + billy.getCoord().ToString());
+                billy.setState("Found");
                 //removeAgent(ref billy);
-                billy.setColor(Color.Black);
+                billy.imageSetColor(Color.Black);
+                //billy.imageSetSize(0.1f);
+                //Console.WriteLine("takeObj = true");
                 return true;
             }
-            else {
+            else
+            {
+                //Console.WriteLine("takeObj = false");
                 return false;
             }
         }
 
         public void changeAgentColor(Color col, ref AgentEnv agent)
         {
-            agent.setColor(col);
+            agent.imageSetColor(col);
         }
 
         
@@ -174,7 +186,7 @@ namespace agentSpace
         //Functions for user
         public AgentEnv createDummy1()
         {
-            AgentInfo info = new AgentInfo (Color.Green, 0.01f, "Dummy",generateID());
+            AgentInfo info = new AgentInfo (Color.Green, 0.01f, "Dummy",generateID(), "Searching");
             AgentEnv env = new AgentEnv(0.5f, 0.5f, 0.02f, 0.1f, info);
             Agent bill = new Dummy1(ref env);
             env.setAgent(ref bill);
@@ -183,14 +195,12 @@ namespace agentSpace
         }
 
         public AgentEnv createLittleGirl1() {
-            AgentInfo info = new AgentInfo(Color.Pink, 0.005f, "Little Girl", generateID());
+            AgentInfo info = new AgentInfo(Color.Pink, 0.005f, "Little Girl", generateID(), "Find me");
             AgentEnv env = new AgentEnv(0.5f, 0.5f, 0.02f, 0.1f, info);
             Agent nancy = new LittleGirl1(ref env);
             env.setAgent(ref nancy);
             addAgent(ref env);
             return env;
         }
-            
-
     }
 }

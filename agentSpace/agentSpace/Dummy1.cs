@@ -21,8 +21,10 @@ namespace agentSpace
 
         public override void doSomething()
         {
+            //Console.WriteLine("DoSomething()");
             if (!grabObjectsAround())
             {
+                //Console.WriteLine("Can touch aim?");
                 if (canTouch(aim))
                 {
                     genAim();
@@ -34,33 +36,44 @@ namespace agentSpace
             }
         }
 
+        private void setAim(Coordinates coord)
+        {
+            aim = coord;
+        }
+
         private bool grabObjectsAround() {
+            //Console.WriteLine("Grab objects Around()");
             List<AgentCutaway> cuts = lookAround();
             bool found = false;
             foreach (AgentCutaway cut in cuts) {
-                Console.WriteLine(cuts.Count.ToString());
-                if (cut.agentType == "Little Girl")
+                if (cut.agentType == "Little Girl" && cut.state == "Find me")
                 {
                    // aim = cut.pos;
+                   // Console.WriteLine("Objectname = " + cut.state);
                     changeMyColor(Color.Blue);
-                    aim = getMyPos(); 
+                    setAim(cut.pos);
                     found = grabObject(cut.agentID);
+                   // Console.WriteLine("Returned true");
                     return found;
                 }
             }
+            //Console.WriteLine("Returned false");
             return false;
         }
 
 
         private void genAim() {
-            aim.x = (float)randGen.NextDouble();
-            aim.y = (float)randGen.NextDouble();
+           // Console.WriteLine("GenAim()");
+            Coordinates coord = new Coordinates((float)randGen.NextDouble(), (float)randGen.NextDouble());
+            setAim(coord);
         }
+
         private void moveToAim()
         {
+            //Console.WriteLine("MoveToAim()");
             Coordinates vec = aim - getMyPos();
-            makeStep(vec, 1.0f);
-            //makeStep(new Coordinates(1.0f,1.0f),1.0f);
+            float perc = vec.norm()/getMySpeed();
+            makeStep(vec, perc);
         }
     }
 }

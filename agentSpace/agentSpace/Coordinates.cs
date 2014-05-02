@@ -49,7 +49,7 @@ namespace agentSpace
         }
 
         public float norm() { //Length of vector
-            return ( x * x + y * y);
+            return ((float)Math.Sqrt( x * x + y * y));
         }
 
         public Coordinates normalize()
@@ -62,6 +62,11 @@ namespace agentSpace
             x = x / div;
             y = y / div;
             return this;
+        }
+
+        public override string ToString()
+        {
+            return "Coordinates x = " + x.ToString() + ", y = " + y.ToString();
         }
         
            

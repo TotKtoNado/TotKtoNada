@@ -71,11 +71,13 @@ namespace agentSpace
 
         public void setCoord(Coordinates coord_)
         {
+            //Console.WriteLine("Agent:" + getTypeName() + "," + "changing Coord from" + getCoord().ToString() + " to " + coord_.ToString());
             coord.safeAssign(coord_.x,coord_.y);
         }
 
         public Coordinates getCoord()
         {
+            //Console.WriteLine("Agent:" + getTypeName() + "," + "Have coords" + coord);
             return coord;
         }
 
@@ -91,7 +93,7 @@ namespace agentSpace
 
         public AgentCutaway getCutaway()
         {
-            AgentCutaway visit = new AgentCutaway(info.agentType, info.agentID, getCoord());
+            AgentCutaway visit = new AgentCutaway(info.agentType, info.agentID, getCoord(),info.agentState);
             return visit;
         }
 
@@ -105,10 +107,29 @@ namespace agentSpace
             return info.agentType;
         }
 
-        public void setColor(Color col)
+        public String getState()
+        {
+            return info.agentState;
+        }
+
+        public void setState(string state)
+        {
+            info.agentState = state;
+        }
+
+
+        public void imageSetColor(Color col)
         {
             info.agentColor = col;
         }
+
+        public void imageSetSize(float rad)
+        {
+            info.agentRadius = rad;
+        }
+
+        
+        
 
         public void doSomething() // дописать
         {

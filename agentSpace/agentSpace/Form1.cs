@@ -17,22 +17,24 @@ namespace agentSpace
         public mainForm()
         {
             InitializeComponent();
-            board = new Board(ref Field);
-            Coordinates pos = new Coordinates(0.3f, 0.4f);
+            board = new Board(ref Field,ref ViewRange);
+            Coordinates pos = new Coordinates(0.2f, 0.2f);
             bill1 = board.createDummy1();
-            //AgentEnv bill2 = board.createDummy1();
+            AgentEnv bill2 = board.createDummy1();
             //AgentEnv bill3 = board.createDummy1();
-            AgentEnv nancy = board.createLittleGirl1();
+            AgentEnv nancy = board.createLittleGirl1(); 
             bill1.setCoord(pos);
-            //bill2.setCoord(pos* 2.0f);
+            bill2.setCoord(pos* 1.5f);
             //bill3.setCoord(pos * 0.75f);
-            nancy.setCoord(new Coordinates(0.9f, 0.8f));
+            nancy.setCoord(new Coordinates(0.1f, 0.9f));
+            //Console.WriteLine(pos.norm().ToString());
         }
 
 
         //handlers
         private void Field_Click(object sender, EventArgs e)
         {
+            board.launchAgents();
         }
 
         private void Field_Paint(object sender, PaintEventArgs e)

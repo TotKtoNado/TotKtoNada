@@ -33,6 +33,7 @@
             this.Field = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.ViewRange = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Field)).BeginInit();
             this.SuspendLayout();
@@ -43,7 +44,8 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.Field, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label1, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.ViewRange, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -69,15 +71,25 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(3, 515);
+            this.label1.Location = new System.Drawing.Point(258, 515);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(249, 41);
+            this.label1.Size = new System.Drawing.Size(250, 41);
             this.label1.TabIndex = 1;
             // 
             // timer1
             // 
             this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // ViewRange
+            // 
+            this.ViewRange.AutoSize = true;
+            this.ViewRange.Location = new System.Drawing.Point(3, 518);
+            this.ViewRange.Name = "ViewRange";
+            this.ViewRange.Size = new System.Drawing.Size(108, 17);
+            this.ViewRange.TabIndex = 2;
+            this.ViewRange.Text = "Show view range";
+            this.ViewRange.UseVisualStyleBackColor = true;
             // 
             // mainForm
             // 
@@ -100,6 +112,7 @@
         private System.Windows.Forms.PictureBox Field;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.CheckBox ViewRange;
     }
 }
 

@@ -16,13 +16,15 @@ namespace agentSpace
         public float agentRadius;
         public string agentType;
         public Int32 agentID;
+        public string agentState;
 
-        public AgentInfo(Color col, float rad, string agType, Int32 ID)
+        public AgentInfo(Color col, float rad, string agType, Int32 ID, string state)
         {
             agentID = ID;
             agentColor = col;
             agentRadius = rad;
             agentType = agType;
+            agentState = state;
         }
         
     }
@@ -32,12 +34,14 @@ namespace agentSpace
         public string agentType;
         public Int32 agentID;
         public Coordinates pos;
+        public string state;
 
-        public AgentCutaway(string agTy, Int32 ID, Coordinates pos_)
+        public AgentCutaway(string agTy, Int32 ID, Coordinates pos_, string state_)
         {
             agentType = agTy;
             agentID = ID;
             pos = pos_;
+            state = state_;
         }
     }
 
