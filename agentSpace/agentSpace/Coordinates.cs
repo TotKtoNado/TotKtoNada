@@ -18,6 +18,12 @@ namespace agentSpace
             y = 0;
         }
 
+        public static float area(Coordinates a, Coordinates b, Coordinates c)
+        {
+            return (b.x - a.x) * (c.y - a.y) * (b.y - a.y) * (c.x - a.x);
+        }
+
+
         public Coordinates safeAssign(float x_, float y_)
         {
             x = Math.Max(Math.Min(x_, 1.0f), 0.0f);
