@@ -21,20 +21,20 @@ namespace agentSpace
             Coordinates pos = new Coordinates(0.2f, 0.2f);
             bill1 = board.createDummy1();
             AgentEnv bill2 = board.createDummy1();
-            //AgentEnv bill3 = board.createDummy1();
             AgentEnv nancy = board.createLittleGirl1(); 
             bill1.setCoord(pos);
             bill2.setCoord(pos* 1.5f);
-            //bill3.setCoord(pos * 0.75f);
-            nancy.setCoord(new Coordinates(0.1f, 0.9f));
+            AgentEnv iggy;
+            nancy.setCoord(new Coordinates(0.49f, 0.51f));
             //Console.WriteLine(pos.norm().ToString());
             for (int i = 0; i < 10; i++)
             {
                 //board.addWall(Segment.randomSeg());
-                board.createDummy1();
+                iggy = board.createDummy1();
+                iggy.setCoord(new Coordinates(0.6f, 0.5f));
             }
-            board.addWall(new Segment(0f, 0.5f, 0.4f, 0.5f));
-            board.addWall(new Segment(0.5f, 1f, 0.5f, 0.6f));
+            board.addWall(new Segment(0f, 0.5f, 0.51f, 0.5f));
+            board.addWall(new Segment(0.5f, 1f, 0.5f, 0.49f));
         }
 
 
