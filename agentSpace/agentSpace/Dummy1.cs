@@ -73,7 +73,10 @@ namespace agentSpace
             //Console.WriteLine("MoveToAim()");
             Coordinates vec = aim - getMyPos();
             float perc = vec.norm()/getMySpeed();
-            makeStep(vec, perc);
+            if (makeStep(vec, perc) == false)
+            {
+                genAim();
+            }
         }
     }
 }

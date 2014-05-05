@@ -28,7 +28,10 @@ namespace agentSpace
             //bill3.setCoord(pos * 0.75f);
             nancy.setCoord(new Coordinates(0.1f, 0.9f));
             //Console.WriteLine(pos.norm().ToString());
-            board.addWall(new Segment(0.5f,0.5f,0.6f,0.6f));
+            for (int i = 0; i < 10; i++)
+            {
+                board.addWall(Segment.randomSeg());
+            }
         }
 
 
@@ -50,7 +53,7 @@ namespace agentSpace
         private void timer1_Tick(object sender, EventArgs e)
         {
 
-            //board.launchAgents();
+            board.launchAgents();
 
             label1.Text = "";
             //label1.Text = label1.Text + "\nbill.getCoord() : " + list[0].getCoord().x.ToString() + " ; " + list[0].getCoord().y.ToString();

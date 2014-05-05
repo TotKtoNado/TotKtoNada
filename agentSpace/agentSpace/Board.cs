@@ -89,7 +89,9 @@ namespace agentSpace
 
         private bool isPathLegal(Coordinates start, Coordinates finish)
         {
-            return (finish.x < 1.0f && finish.x > 0.0f && finish.y < 1.0f && finish.y > 0.0f);
+            bool noWalls = !walls.haveIntersections(new Segment(start, finish));
+            bool inRange = (finish.x < 1.0f && finish.x > 0.0f && finish.y < 1.0f && finish.y > 0.0f);
+            return noWalls && inRange;
         }
 
         private bool canSee (Coordinates start, Coordinates finish) 
