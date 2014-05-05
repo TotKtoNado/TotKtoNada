@@ -102,17 +102,17 @@ namespace agentSpace
             return info.agentID;
         }
 
-        public String getTypeName()
+        public AgentType getTypeName()
         {
             return info.agentType;
         }
 
-        public String getState()
+        public AgentState getState()
         {
             return info.agentState;
         }
 
-        public void setState(string state)
+        public void setState(AgentState state)
         {
             info.agentState = state;
         }

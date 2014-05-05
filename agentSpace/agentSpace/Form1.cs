@@ -30,8 +30,11 @@ namespace agentSpace
             //Console.WriteLine(pos.norm().ToString());
             for (int i = 0; i < 10; i++)
             {
-                board.addWall(Segment.randomSeg());
+                //board.addWall(Segment.randomSeg());
+                board.createDummy1();
             }
+            board.addWall(new Segment(0f, 0.5f, 0.4f, 0.5f));
+            board.addWall(new Segment(0.5f, 1f, 0.5f, 0.6f));
         }
 
 

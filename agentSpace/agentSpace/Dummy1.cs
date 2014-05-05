@@ -46,7 +46,7 @@ namespace agentSpace
             List<AgentCutaway> cuts = lookAround();
             bool found = false;
             foreach (AgentCutaway cut in cuts) {
-                if (cut.agentType == "Little Girl" && cut.state == "Find me")
+                if (cut.type == AgentType.Little_Girl && cut.state == AgentState.Find_Me)
                 {
                    // aim = cut.pos;
                    // Console.WriteLine("Objectname = " + cut.state);

@@ -12,7 +12,7 @@ namespace agentSpace
 
         bool canTouch(Coordinates point, ref AgentEnv client);
 
-        List<AgentCutaway> objectsInRange(ref AgentEnv agent);
+        List<AgentCutaway> agentsInRange(ref AgentEnv agent);
 
         bool takeObj(Int32 objId, ref AgentEnv agent);
 

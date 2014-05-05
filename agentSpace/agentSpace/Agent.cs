@@ -53,7 +53,7 @@ namespace agentSpace
 
         protected List<AgentCutaway> lookAround()
         {
-            return env.getBoard().objectsInRange(ref env);
+            return env.getBoard().agentsInRange(ref env);
         }
 
         protected bool grabObject(Int32 objID)

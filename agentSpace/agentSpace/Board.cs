@@ -96,7 +96,9 @@ namespace agentSpace
 
         private bool canSee (Coordinates start, Coordinates finish) 
         {
-            return (finish.x < 1.0f && finish.x > 0.0f && finish.y < 1.0f && finish.y > 0.0f);
+            bool noWalls = !walls.haveIntersections(new Segment(start, finish));
+            bool inRange = finish.x < 1.0f && finish.x > 0.0f && finish.y < 1.0f && finish.y > 0.0f;
+            return noWalls && inRange;
         }
 
         private AgentEnv findAgent ( Int32 id) {
@@ -107,9 +109,9 @@ namespace agentSpace
                 });
         }
 
-        private bool canTake(string takerState, string objectState)
+        private bool canTake(AgentState takerState, AgentState objectState)
         {
-            if (takerState == "Searching" && objectState == "Find me")
+            if (takerState == AgentState.Searching && objectState == AgentState.Find_Me)
             {
                 return true;
             }
@@ -145,7 +147,7 @@ namespace agentSpace
             return canTouch1(point, ref client);
         }
 
-        List<AgentCutaway> IAgentFunctions.objectsInRange(ref AgentEnv agent)
+        List<AgentCutaway> IAgentFunctions.agentsInRange(ref AgentEnv agent)
         {//Returns list of Agents Cutaways, that asking-agent can see
             Coordinates obs = agent.getCoord();
             List<AgentCutaway> rez = new List<AgentCutaway>();
@@ -171,7 +173,7 @@ namespace agentSpace
                 canTouch1(billy.getCoord(), ref agent))
             {
                 //Console.WriteLine("Little girl = " + billy.getCoord().ToString());
-                billy.setState("Found");
+                billy.setState(AgentState.Found);
                 //removeAgent(ref billy);
                 billy.imageSetColor(Color.Black);
                 //billy.imageSetSize(0.1f);
@@ -197,7 +199,7 @@ namespace agentSpace
         //Functions for user
         public AgentEnv createDummy1()
         {
-            AgentInfo info = new AgentInfo (Color.Green, 0.01f, "Dummy",generateID(), "Searching");
+            AgentInfo info = new AgentInfo (Color.Green, 0.01f, AgentType.Dummy,generateID(), AgentState.Searching);
             AgentEnv env = new AgentEnv(0.5f, 0.5f, 0.02f, 0.1f, info);
             Agent bill = new Dummy1(ref env);
             env.setAgent(bill);
@@ -206,7 +208,7 @@ namespace agentSpace
         }
 
         public AgentEnv createLittleGirl1() {
-            AgentInfo info = new AgentInfo(Color.Pink, 0.005f, "Little Girl", generateID(), "Find me");
+            AgentInfo info = new AgentInfo(Color.Pink, 0.005f, AgentType.Little_Girl, generateID(), AgentState.Find_Me);
             AgentEnv env = new AgentEnv(0.5f, 0.5f, 0.02f, 0.1f, info);
             Agent nancy = new LittleGirl1(ref env);
             env.setAgent(nancy);

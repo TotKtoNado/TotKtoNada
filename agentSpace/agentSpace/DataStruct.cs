@@ -14,11 +14,11 @@ namespace agentSpace
     {
         public Color agentColor;
         public float agentRadius;
-        public string agentType;
+        public AgentType agentType;
         public Int32 agentID;
-        public string agentState;
+        public AgentState agentState;
 
-        public AgentInfo(Color col, float rad, string agType, Int32 ID, string state)
+        public AgentInfo(Color col, float rad, AgentType agType, Int32 ID, AgentState state)
         {
             agentID = ID;
             agentColor = col;
@@ -31,14 +31,14 @@ namespace agentSpace
 
     public struct AgentCutaway
     {
-        public string agentType;
+        public AgentType type;
         public Int32 agentID;
         public Coordinates pos;
-        public string state;
+        public AgentState state;
 
-        public AgentCutaway(string agTy, Int32 ID, Coordinates pos_, string state_)
+        public AgentCutaway(AgentType agTy, Int32 ID, Coordinates pos_, AgentState state_)
         {
-            agentType = agTy;
+            type = agTy;
             agentID = ID;
             pos = pos_;
             state = state_;
@@ -88,4 +88,9 @@ namespace agentSpace
         }
     }
 
+
+    // Types
+    public enum AgentType { Dummy, Little_Girl };
+    public enum AgentState { Searching, Find_Me, Found };
+    public enum WallType { Common_Wall };
 }
