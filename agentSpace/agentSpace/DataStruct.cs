@@ -88,6 +88,17 @@ namespace agentSpace
         }
     }
 
+    public struct Wall
+    {
+        public Segment seg;
+        public WallType type;
+
+        public Wall(Segment seg_, WallType type_)
+        {
+            seg = seg_;
+            type = type_;
+        }
+    }
 
     // Types
     public enum AgentType { Dummy, Little_Girl };

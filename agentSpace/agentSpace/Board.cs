@@ -220,7 +220,7 @@ namespace agentSpace
         // WALLS functions
         public void addWall(Segment seg)
         {
-            walls.add(seg);
+            walls.addCommonWall(seg);
         }
     }
 }
