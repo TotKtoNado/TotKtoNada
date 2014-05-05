@@ -17,6 +17,7 @@ namespace agentSpace
         private List<AgentEnv> agentListm;
         private Int32 generatorID;
         private CheckBox showRadius;
+        private ObstacleList walls;
 
         public Board(ref PictureBox pic, ref CheckBox showRad)
         {
@@ -24,6 +25,7 @@ namespace agentSpace
             agentWorld = pic;
             agentListm = new List<AgentEnv>();
             showRadius = showRad;
+            walls = new ObstacleList();
         }
 
         private Int32 generateID()
@@ -44,6 +46,8 @@ namespace agentSpace
             {
                 ag.draw(e);
             }
+            walls.drawWalls(e);
+
         }
 
         private void drawAllRadius(PaintEventArgs e)
@@ -201,6 +205,13 @@ namespace agentSpace
             env.setAgent(ref nancy);
             addAgent(ref env);
             return env;
+        }
+
+        
+        // WALLS functions
+        public void addWall(Segment seg)
+        {
+            walls.add(seg);
         }
     }
 }

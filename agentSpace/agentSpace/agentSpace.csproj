@@ -59,6 +59,7 @@
     </Compile>
     <Compile Include="LittleGirl.cs" />
     <Compile Include="LittleGirl1.cs" />
+    <Compile Include="ObstacleList.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">

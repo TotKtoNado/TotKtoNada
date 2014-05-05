@@ -28,21 +28,7 @@ namespace agentSpace
             //bill3.setCoord(pos * 0.75f);
             nancy.setCoord(new Coordinates(0.1f, 0.9f));
             //Console.WriteLine(pos.norm().ToString());
-            Coordinates a = new Coordinates(0.8f, 0.8f);
-            Coordinates b = new Coordinates(0.1f, 0.9f);
-            Coordinates c = new Coordinates(0.9f, 0.9f);
-            Coordinates d = new Coordinates(0.9f, 0.1f);
-            Segment ab = new Segment(a, b);
-            Segment ac = new Segment(a, c);
-            Segment ad = new Segment(a, d);
-            Segment bc = new Segment(b, c);
-            Segment bd = new Segment(b, d);
-            Segment cd = new Segment(c, d);
-            Console.WriteLine("ab  bc = " + ab.intersects(bc).ToString());
-            Console.WriteLine("ab  cd = " + ab.intersects(cd).ToString());
-            Console.WriteLine("ad  ad = " + ad.intersects(ad).ToString());
-            Console.WriteLine("bc  ad = " + bc.intersects(ad).ToString());
-            Console.WriteLine("ac  bd = " + ac.intersects(bd).ToString());
+            board.addWall(new Segment(0.5f,0.5f,0.6f,0.6f));
         }
 
 
