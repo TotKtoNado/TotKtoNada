@@ -12,7 +12,6 @@ using System.Windows.Forms;
 
 namespace agentSpace
 {
-
     public class Agent
     {
         private AgentEnv env;

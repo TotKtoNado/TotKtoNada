@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace agentSpace
 {
-    public class Board
+    public class Board : IAgentFunctions
     {
         private PictureBox agentWorld;
         private const float touchDist = 0.002f;
@@ -70,7 +70,7 @@ namespace agentSpace
         {
             Board me = this;
             agentListm.Add(ag);
-            ag.setBoard(ref me);
+            ag.setBoard(me);
             return;
         }
 
@@ -116,9 +116,15 @@ namespace agentSpace
             return false;
         }
 
+        bool canTouch1(Coordinates point, ref AgentEnv client)
+        {
+            Coordinates pos = client.getCoord();
+            return (isPathLegal(pos, point) && ((pos - point).norm() < touchDist));
+        }
+
 
         //Interface elements for agents
-        public bool askStep(Coordinates vec, float speedPercent, ref AgentEnv client)
+        bool IAgentFunctions.askStep(Coordinates vec, float speedPercent, ref AgentEnv client)
         {
             Coordinates pos = client.getCoord(), des;
             float perc = Math.Min(Math.Max(0.0f, speedPercent), 1.0f);
@@ -133,14 +139,13 @@ namespace agentSpace
                 return false;
             }
         }
- 
-        public bool canTouch(Coordinates point, ref AgentEnv client)
+
+        bool IAgentFunctions.canTouch(Coordinates point, ref AgentEnv client)
         {
-            Coordinates pos = client.getCoord();
-            return (isPathLegal(pos, point) && ((pos - point).norm() < touchDist));
+            return canTouch1(point, ref client);
         }
 
-        public List<AgentCutaway> objectsInRange(ref AgentEnv agent)
+        List<AgentCutaway> IAgentFunctions.objectsInRange(ref AgentEnv agent)
         {//Returns list of Agents Cutaways, that asking-agent can see
             Coordinates obs = agent.getCoord();
             List<AgentCutaway> rez = new List<AgentCutaway>();
@@ -156,14 +161,14 @@ namespace agentSpace
             }
             return rez;
         }
-       
-        public bool takeObj(Int32 objId, ref AgentEnv agent)
+
+        bool IAgentFunctions.takeObj(Int32 objId, ref AgentEnv agent)
         { //If agent can "take" object and he can touch that object, the object removes from the field
             AgentEnv billy = findAgent(objId);
             //Console.WriteLine("can take = " + canTake(agent.getState(), billy.getState()).ToString());
             //Console.WriteLine("can touch = " + canTouch(billy.getCoord(), ref agent));
             if (canTake(agent.getState(), billy.getState()) &&
-                canTouch(billy.getCoord(), ref agent))
+                canTouch1(billy.getCoord(), ref agent))
             {
                 //Console.WriteLine("Little girl = " + billy.getCoord().ToString());
                 billy.setState("Found");
@@ -180,7 +185,7 @@ namespace agentSpace
             }
         }
 
-        public void changeAgentColor(Color col, ref AgentEnv agent)
+        void IAgentFunctions.changeAgentColor(Color col, ref AgentEnv agent)
         {
             agent.imageSetColor(col);
         }
@@ -195,7 +200,7 @@ namespace agentSpace
             AgentInfo info = new AgentInfo (Color.Green, 0.01f, "Dummy",generateID(), "Searching");
             AgentEnv env = new AgentEnv(0.5f, 0.5f, 0.02f, 0.1f, info);
             Agent bill = new Dummy1(ref env);
-            env.setAgent(ref bill);
+            env.setAgent(bill);
             addAgent(ref env);
             return env;
         }
@@ -204,7 +209,7 @@ namespace agentSpace
             AgentInfo info = new AgentInfo(Color.Pink, 0.005f, "Little Girl", generateID(), "Find me");
             AgentEnv env = new AgentEnv(0.5f, 0.5f, 0.02f, 0.1f, info);
             Agent nancy = new LittleGirl1(ref env);
-            env.setAgent(ref nancy);
+            env.setAgent(nancy);
             addAgent(ref env);
             return env;
         }

@@ -14,7 +14,7 @@ namespace agentSpace
         private float speed;
         private float viewRadius;
 
-        private Board server;
+        private IAgentFunctions server;
         private Agent agent;
         private static Random randGen = new Random();
         private AgentInfo info;
@@ -55,16 +55,16 @@ namespace agentSpace
 
 
         //setters getters
-        public void setBoard(ref Board ser)
+        public void setBoard(IAgentFunctions ser)
         {
             server = ser;
         }
 
-        public Board getBoard () {
+        public IAgentFunctions getBoard () {
             return server;
         }
 
-        public void setAgent(ref Agent ag)
+        public void setAgent(Agent ag)
         {
             agent = ag;
         }
