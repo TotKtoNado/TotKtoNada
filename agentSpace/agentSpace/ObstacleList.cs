@@ -37,11 +37,13 @@ namespace agentSpace
 
         public bool haveIntersections (Segment path) {
             foreach (Wall wallStruct in list.Values) {
-                if (wallStruct.type == WallType.Common_Wall && 
-                    path.intersects(wallStruct.seg)) {
+                if (wallStruct.type == WallType.Common_Wall &&
+                    Segment.intersection(path,wallStruct.seg)) 
+                {
                     return true;
                 }
             }
+            //Console.WriteLine("DON'T INTERSECT\n" + path.ToString());
             return false;
         }
 

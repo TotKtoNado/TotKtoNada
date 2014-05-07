@@ -17,6 +17,7 @@ namespace agentSpace
         public mainForm()
         {
             InitializeComponent();
+            ViewRange.Checked = true;
             board = new Board(ref Field,ref ViewRange);
             Coordinates pos = new Coordinates(0.2f, 0.2f);
             bill1 = board.createDummy1();
@@ -27,11 +28,11 @@ namespace agentSpace
             AgentEnv iggy;
             nancy.setCoord(new Coordinates(0.49f, 0.51f));
             //Console.WriteLine(pos.norm().ToString());
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 5; i++)
             {
-                //board.addWall(Segment.randomSeg());
-                //iggy = board.createDummy1();
-                //iggy.setCoord(new Coordinates(0.6f, 0.5f));
+                board.addWall(Segment.randomSeg());
+                iggy = board.createDummy1();
+                iggy.setCoord(new Coordinates(0.6f, 0.4f));
             }
             board.addWall(new Segment(0f, 0.5f, 0.51f, 0.5f));
             board.addWall(new Segment(0.5f, 1f, 0.5f, 0.49f));
