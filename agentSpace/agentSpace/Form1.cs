@@ -30,8 +30,8 @@ namespace agentSpace
             for (int i = 0; i < 10; i++)
             {
                 //board.addWall(Segment.randomSeg());
-                iggy = board.createDummy1();
-                iggy.setCoord(new Coordinates(0.6f, 0.5f));
+                //iggy = board.createDummy1();
+                //iggy.setCoord(new Coordinates(0.6f, 0.5f));
             }
             board.addWall(new Segment(0f, 0.5f, 0.51f, 0.5f));
             board.addWall(new Segment(0.5f, 1f, 0.5f, 0.49f));
