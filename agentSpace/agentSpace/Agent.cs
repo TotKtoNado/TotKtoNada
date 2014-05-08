@@ -66,5 +66,10 @@ namespace agentSpace
             env.getBoard().changeAgentColor(col, ref env);
         }
 
+        protected List<Wall> wallsAround()
+        {
+            return env.getBoard().wallsAround(ref env);
+        }
+
     }
 }

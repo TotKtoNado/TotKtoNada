@@ -30,7 +30,7 @@ namespace agentSpace
             //Console.WriteLine(pos.norm().ToString());
             for (int i = 0; i < 5; i++)
             {
-                board.addWall(Segment.randomSeg());
+                //board.addWall(Segment.randomSeg());
                 iggy = board.createDummy1();
                 iggy.setCoord(new Coordinates(0.6f, 0.4f));
             }
@@ -47,10 +47,6 @@ namespace agentSpace
 
         private void Field_Paint(object sender, PaintEventArgs e)
         {
-            //foreach (Agent agent in list)
-            //{
-            //    agent.draw(e);
-            //}
             board.drawAll(e);
         }
 

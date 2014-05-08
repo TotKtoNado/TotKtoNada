@@ -51,6 +51,7 @@
     <Compile Include="Coordinates.cs" />
     <Compile Include="Dummy1.cs" />
     <Compile Include="DummyAgent.cs" />
+    <Compile Include="Finder1.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

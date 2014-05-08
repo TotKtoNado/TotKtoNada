@@ -17,5 +17,7 @@ namespace agentSpace
         bool takeObj(Int32 objId, ref AgentEnv agent);
 
         void changeAgentColor(Color col, ref AgentEnv agent);
+
+        List<Wall> wallsAround(ref AgentEnv agent);
     }
 }

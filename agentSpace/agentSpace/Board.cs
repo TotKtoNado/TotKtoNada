@@ -192,6 +192,12 @@ namespace agentSpace
             agent.imageSetColor(col);
         }
 
+
+        List<Wall> IAgentFunctions.wallsAround(ref AgentEnv agent)
+        {
+            return walls.wallsAroundPoint(agent.getCoord(), agent.getViewRadius());
+        }
+
         
         //agentEnv functions
 
@@ -200,7 +206,7 @@ namespace agentSpace
         public AgentEnv createDummy1()
         {
             AgentInfo info = new AgentInfo (Color.Green, 0.01f, AgentType.Dummy,generateID(), AgentState.Searching);
-            AgentEnv env = new AgentEnv(0.5f, 0.5f, 0.02f, 0.1f, info);
+            AgentEnv env = new AgentEnv(0.5f, 0.5f, 0.02f, 0.03f, info);
             Agent bill = new Dummy1(ref env);
             env.setAgent(bill);
             addAgent(ref env);
@@ -209,7 +215,7 @@ namespace agentSpace
 
         public AgentEnv createLittleGirl1() {
             AgentInfo info = new AgentInfo(Color.Pink, 0.005f, AgentType.Little_Girl, generateID(), AgentState.Find_Me);
-            AgentEnv env = new AgentEnv(0.5f, 0.5f, 0.02f, 0.1f, info);
+            AgentEnv env = new AgentEnv(0.5f, 0.5f, 0.02f, 0.01f, info);
             Agent nancy = new LittleGirl1(ref env);
             env.setAgent(nancy);
             addAgent(ref env);

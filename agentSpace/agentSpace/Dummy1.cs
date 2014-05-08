@@ -10,18 +10,20 @@ namespace agentSpace
     class Dummy1 : DummyAgent
     {
         protected static Random randGen = new Random();
-        private Coordinates aim = new Coordinates (0.5f,0.5f);
+        private Coordinates aim = new Coordinates ();
 
 
         public Dummy1 (ref AgentEnv env) 
             : base (ref env)
         {
+            genAim();
         }
 
 
         public override void doSomething()
         {
             //Console.WriteLine("DoSomething()");
+            wallsAround();
             if (!grabObjectsAround())
             {
                 //Console.WriteLine("Can touch aim?");
