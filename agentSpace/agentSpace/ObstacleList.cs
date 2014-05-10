@@ -10,6 +10,8 @@ using System.Windows.Forms;
 
 namespace agentSpace
 {
+    public enum WallType { Common_Wall };
+
     class ObstacleList
     {
         private Dictionary<Int16, Wall> list;

@@ -62,5 +62,4 @@ namespace agentSpace
     // Types
     public enum AgentType { Dummy, Little_Girl };
     public enum AgentState { Searching, Find_Me, Found };
-    public enum WallType { Common_Wall };
 }

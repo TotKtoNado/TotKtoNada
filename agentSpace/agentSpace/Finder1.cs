@@ -10,7 +10,10 @@ namespace agentSpace
     {
 
 
-        protected static Random randGen = new Random();
+        private static Random randGen = new Random();
+
+
+
         public Finder1(ref AgentEnv env) : base(ref env) { }
 
         public override void doSomething()
