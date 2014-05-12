@@ -53,6 +53,14 @@ namespace agentSpace
 
         }
 
+        public void drawMatrix(System.Windows.Forms.PaintEventArgs e)
+        {
+            if (getTypeName() == AgentType.Finder)
+            {
+                agent.drawMatrix(e);
+            }
+        }
+
 
         //setters getters
         public void setBoard(IAgentFunctions ser)
@@ -89,6 +97,11 @@ namespace agentSpace
         public float getViewRadius()
         {
             return viewRadius;
+        }
+
+        public float getCommRadius()
+        {
+            return info.communicteRadius;
         }
 
         public AgentCutaway getCutaway()

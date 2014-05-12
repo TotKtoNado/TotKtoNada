@@ -18,20 +18,20 @@ namespace agentSpace
         {
             InitializeComponent();
             ViewRange.Checked = true;
-            board = new Board(ref Field,ref ViewRange);
+            board = new Board(ref Field,ref ViewRange, ref showMatrix);
             Coordinates pos = new Coordinates(0.2f, 0.2f);
-            bill1 = board.createDummy1();
-            AgentEnv bill2 = board.createDummy1();
+            //bill1 = board.createDummy1();
+            AgentEnv bill2 = board.createFinder1();
             AgentEnv nancy = board.createLittleGirl1(); 
-            bill1.setCoord(pos);
-            bill2.setCoord(pos* 1.5f);
+            //bill1.setCoord(pos);
+            bill2.setCoord(pos* 4.9f);
             AgentEnv iggy;
             nancy.setCoord(new Coordinates(0.49f, 0.51f));
             //Console.WriteLine(pos.norm().ToString());
             for (int i = 0; i < 5; i++)
             {
                 //board.addWall(Segment.randomSeg());
-                iggy = board.createDummy1();
+                iggy = board.createFinder1();
                 iggy.setCoord(new Coordinates(0.6f, 0.4f));
             }
             board.addWall(new Segment(0f, 0.5f, 0.51f, 0.5f));
@@ -59,6 +59,11 @@ namespace agentSpace
             //label1.Text = label1.Text + "\nbill.getCoord() : " + list[0].getCoord().x.ToString() + " ; " + list[0].getCoord().y.ToString();
             //board.drawAll(e);
             Field.Refresh();
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 

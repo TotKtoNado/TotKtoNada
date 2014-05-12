@@ -17,14 +17,16 @@ namespace agentSpace
         public AgentType agentType;
         public Int32 agentID;
         public AgentState agentState;
+        public float communicteRadius;
 
-        public AgentInfo(Color col, float rad, AgentType agType, Int32 ID, AgentState state)
+        public AgentInfo(Color col, float rad, AgentType agType, Int32 ID, AgentState state, float communicateRad)
         {
             agentID = ID;
             agentColor = col;
             agentRadius = rad;
             agentType = agType;
             agentState = state;
+            communicteRadius = communicateRad;
         }
         
     }
@@ -60,6 +62,5 @@ namespace agentSpace
     }
 
     // Types
-    public enum AgentType { Dummy, Little_Girl };
     public enum AgentState { Searching, Find_Me, Found };
 }

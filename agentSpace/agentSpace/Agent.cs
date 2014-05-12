@@ -12,6 +12,8 @@ using System.Windows.Forms;
 
 namespace agentSpace
 {
+    public enum AgentType { Dummy, Little_Girl, Finder };
+
     public class Agent
     {
         private AgentEnv env;
@@ -27,6 +29,10 @@ namespace agentSpace
         virtual public void doSomething () {
         }
 
+        virtual public void drawMatrix(PaintEventArgs e)
+        {
+        }
+
 
         //Interface for Agents
 
@@ -39,6 +45,11 @@ namespace agentSpace
         protected float getMySpeed()
         {
             return env.getSpeed();
+        }
+
+        protected float getMyViewRadius()
+        {
+            return env.getViewRadius();
         }
 
         protected bool canTouch(Coordinates pos)
@@ -70,6 +81,8 @@ namespace agentSpace
         {
             return env.getBoard().wallsAround(ref env);
         }
+
+        
 
     }
 }

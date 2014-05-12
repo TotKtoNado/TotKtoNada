@@ -17,14 +17,16 @@ namespace agentSpace
         private List<AgentEnv> agentListm;
         private Int32 generatorID;
         private CheckBox showRadius;
+        private CheckBox showCells;
         private ObstacleList walls;
 
-        public Board(ref PictureBox pic, ref CheckBox showRad)
+        public Board(ref PictureBox pic, ref CheckBox showRad, ref CheckBox showMatr)
         {
             generatorID = 0;
             agentWorld = pic;
             agentListm = new List<AgentEnv>();
             showRadius = showRad;
+            showCells = showMatr;
             walls = new ObstacleList();
         }
 
@@ -42,12 +44,24 @@ namespace agentSpace
             {
                 drawAllRadius(e);
             }
+            if (showCells.Checked)
+            {
+                drawAllMatrix(e);
+            }
             foreach (AgentEnv ag in agentListm)
             {
                 ag.draw(e);
             }
             walls.drawWalls(e);
 
+        }
+
+        public void drawAllMatrix(PaintEventArgs e)
+        {
+            foreach (AgentEnv ag in agentListm)
+            {
+                ag.drawMatrix(e);
+            }
         }
 
         private void drawAllRadius(PaintEventArgs e)
@@ -57,12 +71,18 @@ namespace agentSpace
             Brush br= new SolidBrush(Color.White);
             foreach (AgentEnv ag in agentListm)
             {
+                //draw sight radius
                 rec.X = (Int32)((ag.getCoord().x - (ag.getViewRadius())) * (float)e.ClipRectangle.Width);
                 rec.Y = (Int32)((ag.getCoord().y - (ag.getViewRadius())) * (float)e.ClipRectangle.Height);
                 rec.Width = (Int32)(ag.getViewRadius()*2f * ((float)e.ClipRectangle.Width));
                 rec.Height = (Int32)(ag.getViewRadius() *2f* ((float)e.ClipRectangle.Height));
-                //Console.WriteLine("x " + rec.X.ToString() + " y " + rec.Y.ToString() + " W " + rec.Width.ToString() + " H " + rec.Height.ToString());
                 e.Graphics.FillEllipse(br, rec);
+                //draw communicate radius
+                rec.X = (Int32)((ag.getCoord().x - (ag.getCommRadius())) * (float)e.ClipRectangle.Width);
+                rec.Y = (Int32)((ag.getCoord().y - (ag.getCommRadius())) * (float)e.ClipRectangle.Height);
+                rec.Width = (Int32)(ag.getCommRadius() * 2f * ((float)e.ClipRectangle.Width));
+                rec.Height = (Int32)(ag.getCommRadius() * 2f * ((float)e.ClipRectangle.Height));
+                e.Graphics.DrawEllipse(new Pen(Color.Red, 1f), rec);
             }
         }
 
@@ -153,11 +173,10 @@ namespace agentSpace
             List<AgentCutaway> rez = new List<AgentCutaway>();
             foreach (AgentEnv ag in agentListm)
             {
-                if ((ag.getCoord() - obs).norm() < agent.getViewRadius() &&
+                if ((ag.getCoord() - obs).norm() < agent.getCommRadius() &&
                       canSee(obs, ag.getCoord()) && 
                       ag.getID()!=agent.getID())
                 {
-                    //Console.WriteLine("Range = " + (ag.getCoord() - obs).x.ToString() + (ag.getCoord() - obs).y.ToString());
                     rez.Add(ag.getCutaway());
                 }
             }
@@ -167,17 +186,11 @@ namespace agentSpace
         bool IAgentFunctions.takeObj(Int32 objId, ref AgentEnv agent)
         { //If agent can "take" object and he can touch that object, the object removes from the field
             AgentEnv billy = findAgent(objId);
-            //Console.WriteLine("can take = " + canTake(agent.getState(), billy.getState()).ToString());
-            //Console.WriteLine("can touch = " + canTouch(billy.getCoord(), ref agent));
             if (canTake(agent.getState(), billy.getState()) &&
                 canTouch1(billy.getCoord(), ref agent))
             {
-                //Console.WriteLine("Little girl = " + billy.getCoord().ToString());
                 billy.setState(AgentState.Found);
-                //removeAgent(ref billy);
                 billy.imageSetColor(Color.Black);
-                //billy.imageSetSize(0.1f);
-                //Console.WriteLine("takeObj = true");
                 return true;
             }
             else
@@ -205,8 +218,8 @@ namespace agentSpace
         //Functions for user
         public AgentEnv createDummy1()
         {
-            AgentInfo info = new AgentInfo (Color.Green, 0.01f, AgentType.Dummy,generateID(), AgentState.Searching);
-            AgentEnv env = new AgentEnv(0.5f, 0.5f, 0.02f, 0.03f, info);
+            AgentInfo info = new AgentInfo(Color.Green, 0.01f, AgentType.Dummy, generateID(), AgentState.Searching, Average.commRadius);
+            AgentEnv env = new AgentEnv(0.5f, 0.5f, Average.speed, Average.viewRadius, info);
             Agent bill = new Dummy1(ref env);
             env.setAgent(bill);
             addAgent(ref env);
@@ -214,10 +227,21 @@ namespace agentSpace
         }
 
         public AgentEnv createLittleGirl1() {
-            AgentInfo info = new AgentInfo(Color.Pink, 0.005f, AgentType.Little_Girl, generateID(), AgentState.Find_Me);
-            AgentEnv env = new AgentEnv(0.5f, 0.5f, 0.02f, 0.01f, info);
+            AgentInfo info = new AgentInfo(Color.Pink, 0.005f, AgentType.Little_Girl, generateID(), AgentState.Find_Me, Average.commRadius);
+            AgentEnv env = new AgentEnv(0.5f, 0.5f, Average.speed, Average.viewRadius, info);
             Agent nancy = new LittleGirl1(ref env);
             env.setAgent(nancy);
+            addAgent(ref env);
+            return env;
+        }
+
+        public AgentEnv createFinder1()
+        {
+            AgentInfo info = new AgentInfo(Color.Magenta, 0.01f, AgentType.Finder, generateID(), AgentState.Searching,Average.commRadius);
+            
+            AgentEnv env = new AgentEnv(0.5f, 0.5f, Average.speed, Average.viewRadius, info); //причесать это и перенести в info
+            Agent holmes = new Finder1(ref env);
+            env.setAgent(holmes);
             addAgent(ref env);
             return env;
         }
