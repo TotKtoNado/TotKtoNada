@@ -19,5 +19,7 @@ namespace agentSpace
         void changeAgentColor(Color col, ref AgentEnv agent);
 
         List<Wall> wallsAround(ref AgentEnv agent);
+
+        bool sendCellMatrix(int agentID, ref AgentEnv agent);
     }
 }

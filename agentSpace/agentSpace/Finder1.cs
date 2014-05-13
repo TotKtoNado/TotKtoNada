@@ -28,8 +28,11 @@ namespace agentSpace
 
         public override void doSomething()
         {
-            cells.setCell(getMyPos(), CellState.Discovered);
-            if (grabObjectsAround())
+            if (cells.setCell(getMyPos()))
+            {
+                cellsUpdated = true;
+            }
+            if (workWithObjectsAround())
             {
                 return;
             }
@@ -50,6 +53,18 @@ namespace agentSpace
             }
         }
 
+        public override bool getCellMatrix(out SearchCells rez)
+        {
+            rez = cells;
+            return true;
+        }
+
+        public override void uniteMatrix(SearchCells matr)
+        {
+            cells.uniteWith(matr);
+            cellsUpdated = false;
+        }
+
         private bool genAim()
         {
             aim = cells.getUndiscoveredCell();
@@ -68,26 +83,40 @@ namespace agentSpace
             return (aim - getMyPos()).norm() < float.Epsilon;
         }
 
-        private bool grabObjectsAround()
+        private bool workWithObjectsAround()
         {
             List<AgentCutaway> cuts = lookAround();
             bool found = false;
+            bool communicate = false;
             foreach (AgentCutaway cut in cuts)
             {
-                if (cut.type == AgentType.Little_Girl && cut.state == AgentState.Find_Me)
+                if (cut.state == AgentState.Find_Me)
                 {
                     aim = cut.pos;
                     found = grabObject(cut.agentID);
                     return found;
                 }
+                else if (cut.type == AgentType.Finder && cellsUpdated)
+                {
+                    sendCellMatrix(cut.agentID);
+                    communicate = true;
+                }
+            }
+            if (communicate && cellsUpdated)
+            {
+                cellsUpdated = false;
             }
             return false;
         }
+
 
         public override void drawMatrix(PaintEventArgs e)
         {
             cells.drawMatrix(e);
         }
+
+        
+       
         
     }
 }

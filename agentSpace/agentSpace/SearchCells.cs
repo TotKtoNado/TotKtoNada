@@ -11,19 +11,22 @@ using System.Windows.Forms;
 
 namespace agentSpace
 {
-    enum CellState  {Undiscovered, Discovered};
+    //enum CellState  {Undiscovered, Discovered};
 
-    class SearchCells
+    public class SearchCells
     {
-        private Dictionary<int, CellState> field;
+        //private Dictionary<int, CellState> field;
+        private HashSet<int> field;
         private Int16 width;
         private Int16 height;
 
         private static Random randGen = new Random();
 
+        public SearchCells() { }
+
         public SearchCells(float radius)
         {
-            field = new Dictionary<int, CellState>();
+            field = new HashSet<int>();
             calculateSize(radius);
         }
 
@@ -33,59 +36,43 @@ namespace agentSpace
             Int16 numberOfCells = (Int16)(1f/cellSize);
             width = numberOfCells;
             height = numberOfCells;
-            setCell(36,5, CellState.Discovered);
+            setCell(36,5);
         }
 
-        public CellState getCell(Int16 x, Int16 y)
+        public bool isDiscovered(Int16 x, Int16 y)
         {
             if (x >= width || y >= height)
             {
-                return CellState.Undiscovered;
+                return false;
             }
-            CellState rez;
-            Int16 pos = (Int16)(x  + y*height);
-            if (field.TryGetValue(pos, out rez))
+            int pos = (x  + y*width);
+            return field.Contains(pos);
+        }
+
+        public bool setCell(Int16 x, Int16 y)
+        {//Returns true, if something in matrix was modified
+            if (x >= width || y >= height)
             {
-                return rez;
+                return false;
+            }
+            int pos = (x  + y*width);
+            if (field.Contains(pos))
+            {
+                return false;
             }
             else
             {
-                return CellState.Undiscovered;
+                field.Add(pos);
+                return true;
             }
         }
 
-        public void setCell(Int16 x, Int16 y, CellState state)
-        {
-            if (x >= width || y >= height)
-            {
-                return;
-            }
-            int pos = (x  + y*width);
-            exclusiveAdd(pos, state);
-        }
 
-        private void exclusiveAdd(int pos, CellState state)
-        {
-            if (pos < 0)
-            {
-                Console.WriteLine("NEGATIVE POS! :" + pos.ToString());
-            }
-            try
-            {
-                field.Add(pos, state);
-            }
-            catch (ArgumentException )
-            {
-                field.Remove(pos);
-                field.Add(pos, state);
-            }
-        }
-
-        public void setCell(Coordinates coord, CellState state)
+        public bool setCell(Coordinates coord)
         {
             Int16 x = (Int16)(coord.x * width);
             Int16 y = (Int16)(coord.y * height);
-            setCell(x, y, state);
+            return setCell(x, y);
         }
 
         private Coordinates getCellPos(Int16 x, Int16 y)
@@ -117,7 +104,7 @@ namespace agentSpace
             else
             {
                 int temp;
-                ICollection<int> col = field.Keys;
+                ICollection<int> col = field;
                 for (int i = 0; i < width * height - 1; i++)
                 {
                     temp = (pos + i) % (width * height - 1);
@@ -135,7 +122,7 @@ namespace agentSpace
             float cellW = (float)e.ClipRectangle.Width / (float)width;
             float cellH = (float)e.ClipRectangle.Height / (float)height;
             int x1 = 0, y1 = 0;
-            foreach (int pos in field.Keys)
+            foreach (int pos in field)
             {
                 x1 = (int)((float)(pos % width) * cellW);
                 y1 = (int)((float)(pos / width) * cellH);
@@ -143,8 +130,14 @@ namespace agentSpace
             }
         }
 
+        public HashSet<int> getCollection()
+        {
+            return field;
+        }
 
-        //public void uniteWith(SearchCells obj) {
-          //  foreach(int pos in 
+        public void uniteWith(SearchCells obj)
+        {
+            field.UnionWith(obj.getCollection());
+        }
     }
 }

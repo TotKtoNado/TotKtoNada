@@ -149,7 +149,15 @@ namespace agentSpace
             agent.doSomething();
         }
 
-        
+        public bool getCellMatrix(out SearchCells output)
+        {
+            return agent.getCellMatrix(out output);
+        }
+
+        public void uniteMatrix(SearchCells matrix)
+        {
+            agent.uniteMatrix(matrix);
+        }
 
 
     }

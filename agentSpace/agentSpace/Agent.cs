@@ -33,6 +33,15 @@ namespace agentSpace
         {
         }
 
+        virtual public bool getCellMatrix(out SearchCells output)
+        {
+            output = new SearchCells();
+            return false;
+        }
+
+        virtual public void uniteMatrix(SearchCells matr)
+        {
+        }
 
         //Interface for Agents
 
@@ -82,7 +91,10 @@ namespace agentSpace
             return env.getBoard().wallsAround(ref env);
         }
 
-        
+        protected bool sendCellMatrix(int agentID)
+        {
+            return env.getBoard().sendCellMatrix(agentID, ref env);
+        }
 
     }
 }

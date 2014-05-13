@@ -58,10 +58,11 @@ namespace agentSpace
 
         public void drawAllMatrix(PaintEventArgs e)
         {
-            foreach (AgentEnv ag in agentListm)
-            {
-                ag.drawMatrix(e);
-            }
+            //foreach (AgentEnv ag in agentListm)
+            //{
+            //    ag.drawMatrix(e);
+            //}
+            agentListm[2].drawMatrix(e);
         }
 
         private void drawAllRadius(PaintEventArgs e)
@@ -121,6 +122,11 @@ namespace agentSpace
             return noWalls && inRange;
         }
 
+
+        private bool canCommunicate (AgentEnv sender, AgentEnv reciever){
+            return (sender.getCoord() - reciever.getCoord()).norm() < sender.getCommRadius();
+        }
+
         private AgentEnv findAgent ( Int32 id) {
             return agentListm.Find(
                 delegate(AgentEnv ag)
@@ -173,9 +179,15 @@ namespace agentSpace
             List<AgentCutaway> rez = new List<AgentCutaway>();
             foreach (AgentEnv ag in agentListm)
             {
-                if ((ag.getCoord() - obs).norm() < agent.getCommRadius() &&
-                      canSee(obs, ag.getCoord()) && 
-                      ag.getID()!=agent.getID())
+                if (ag.getTypeName() == AgentType.Finder && agent.getTypeName() == AgentType.Finder &&
+                    canCommunicate(agent, ag))
+                {
+                    rez.Add(ag.getCutaway());
+                }
+
+                else if ((ag.getCoord() - obs).norm() < agent.getViewRadius() &&
+                      canSee(obs, ag.getCoord()) &&
+                      ag.getID() != agent.getID())
                 {
                     rez.Add(ag.getCutaway());
                 }
@@ -210,6 +222,22 @@ namespace agentSpace
         {
             return walls.wallsAroundPoint(agent.getCoord(), agent.getViewRadius());
         }
+
+        bool IAgentFunctions.sendCellMatrix(int recieverID, ref AgentEnv sender)
+        {
+            AgentEnv reciever = findAgent(recieverID);
+            if (canCommunicate(sender, reciever) &&
+                sender.getTypeName() == AgentType.Finder &&
+                reciever.getTypeName() == AgentType.Finder)
+            {
+                SearchCells temp;
+                sender.getCellMatrix(out temp);
+                reciever.uniteMatrix(temp);
+                return true;
+            }
+            return false;
+        }
+                
 
         
         //agentEnv functions

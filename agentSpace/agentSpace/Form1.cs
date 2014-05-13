@@ -34,8 +34,8 @@ namespace agentSpace
                 iggy = board.createFinder1();
                 iggy.setCoord(new Coordinates(0.6f, 0.4f));
             }
-            board.addWall(new Segment(0f, 0.5f, 0.51f, 0.5f));
-            board.addWall(new Segment(0.5f, 1f, 0.5f, 0.49f));
+            board.addWall(new Segment(0f, 0.5f, 0.3f, 0.5f));
+            board.addWall(new Segment(0.5f, 1f, 0.7f, 0.3f));
         }
 
 
