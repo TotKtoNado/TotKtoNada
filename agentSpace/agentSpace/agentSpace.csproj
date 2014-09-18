@@ -62,6 +62,7 @@
     <Compile Include="Agent.cs" />
     <Compile Include="AgentEnv.cs" />
     <Compile Include="Board.cs" />
+    <Compile Include="Controller.cs" />
     <Compile Include="DataStruct.cs" />
     <Compile Include="Coordinates.cs" />
     <Compile Include="Dummy1.cs" />
