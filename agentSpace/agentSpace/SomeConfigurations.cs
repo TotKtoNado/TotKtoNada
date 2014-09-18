@@ -8,7 +8,7 @@ namespace agentSpace
 {
     struct Average
     {
-        public static float speed = 0.02f;
+        public static float speed = 0.05f;
         public static float viewRadius = 0.03f;
         public static float commRadius = 0.08f;
     }

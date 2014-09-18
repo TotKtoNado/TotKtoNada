@@ -18,15 +18,19 @@ namespace agentSpace
     {
         private AgentEnv env;
 
+        #region Constructor
+
         public Agent(ref AgentEnv env_)
         {
             env = env_;
         }
+        
+        #endregion
 
+        #region Functions to override
 
-
-        //Functions that must be written for agents
-        virtual public void doSomething () {
+        virtual public void doSomething()
+        {
         }
 
         virtual public void drawMatrix(PaintEventArgs e)
@@ -43,7 +47,10 @@ namespace agentSpace
         {
         }
 
-        //Interface for Agents
+        #endregion
+
+
+        #region Agent interface functions
 
         //make step in direction 'vec', using 'speedPerc' of your speed
         protected bool makeStep(Coordinates vec, float speedPerc)
@@ -95,6 +102,7 @@ namespace agentSpace
         {
             return env.getBoard().sendCellMatrix(agentID, ref env);
         }
-
+        
+        #endregion
     }
 }

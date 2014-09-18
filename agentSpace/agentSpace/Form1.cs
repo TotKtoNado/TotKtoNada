@@ -38,17 +38,30 @@ namespace agentSpace
             board.addWall(new Segment(0.5f, 1f, 0.7f, 0.3f));
         }
 
+        #region Mouse handlers
 
-        //handlers
         private void Field_Click(object sender, EventArgs e)
         {
             board.launchAgents();
-        }
+        } 
+
+        #endregion
+
+        #region Drawings
 
         private void Field_Paint(object sender, PaintEventArgs e)
         {
             board.drawAll(e);
         }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        #endregion
+
+        #region Timer
 
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -56,23 +69,12 @@ namespace agentSpace
             board.launchAgents();
 
             label1.Text = "";
-            //label1.Text = label1.Text + "\nbill.getCoord() : " + list[0].getCoord().x.ToString() + " ; " + list[0].getCoord().y.ToString();
-            //board.drawAll(e);
             Field.Refresh();
         }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
+        #endregion
 
-        }
-    }
-
-
-    public class Element
-    {
-        public virtual void draw(PaintEventArgs e)
-        {
-        }
+        
     }
 }
 

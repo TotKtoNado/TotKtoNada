@@ -31,12 +31,10 @@ namespace agentSpace
         }
 
         private void calculateSize (float radius) {
-            float cellSize = 0.9f * radius;
-            //float cellSize = 0.1f;
+            float cellSize = 1f * radius;
             Int16 numberOfCells = (Int16)(1f/cellSize);
             width = numberOfCells;
             height = numberOfCells;
-            setCell(36,5);
         }
 
         public bool isDiscovered(Int16 x, Int16 y)

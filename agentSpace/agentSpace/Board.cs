@@ -1,43 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace agentSpace
 {
     public class Board : IAgentFunctions
     {
-        private PictureBox agentWorld;
+        #region Constants
+
         private const float touchDist = 0.002f;
+
+        #endregion
+
+        private PictureBox picture;
         private List<AgentEnv> agentListm;
         private Int32 generatorID;
+        private ObstacleList wallList;
         private CheckBox showRadius;
         private CheckBox showCells;
-        private ObstacleList walls;
 
+        #region Constructor
         public Board(ref PictureBox pic, ref CheckBox showRad, ref CheckBox showMatr)
         {
             generatorID = 0;
-            agentWorld = pic;
+            picture = pic;
             agentListm = new List<AgentEnv>();
             showRadius = showRad;
             showCells = showMatr;
-            walls = new ObstacleList();
+            wallList = new ObstacleList();
         }
-
-        private Int32 generateID()
-        {
-            generatorID++;
-            return generatorID;
-        }
+        #endregion
 
 
-        //drawings
+        #region Functions for system
+
         public void drawAll(PaintEventArgs e)
         {
             if (showRadius.Checked)
@@ -52,21 +49,30 @@ namespace agentSpace
             {
                 ag.draw(e);
             }
-            walls.drawWalls(e);
-
+            wallList.drawWalls(e);
         }
 
-        public void drawAllMatrix(PaintEventArgs e)
-        {
-            //foreach (AgentEnv ag in agentListm)
-            //{
-            //    ag.drawMatrix(e);
-            //}
+
+
+        public void launchAgents()
+        {//Gives each agent an opportunity to make an action
+            foreach (AgentEnv ag in agentListm)
+            {
+                ag.doSomething();
+            }
+        }
+        #endregion
+
+        #region Draw functions
+
+        private void drawAllMatrix(PaintEventArgs e)
+        {//Draw matrix of search-map for the second agent
+         //TODO: Add options to this function
             agentListm[2].drawMatrix(e);
         }
 
         private void drawAllRadius(PaintEventArgs e)
-        {
+        {//Draws all agent view-fields
             e.Graphics.Clear(Color.LightGray);
             Rectangle rec = new Rectangle();
             Brush br= new SolidBrush(Color.White);
@@ -87,7 +93,11 @@ namespace agentSpace
             }
         }
 
-        public void addAgent(ref AgentEnv ag)
+#endregion
+
+        #region Action subfunctions
+
+        private void addAgent(ref AgentEnv ag)
         {
             Board me = this;
             agentListm.Add(ag);
@@ -95,39 +105,35 @@ namespace agentSpace
             return;
         }
 
-        public void removeAgent(ref AgentEnv ag)
+        private void removeAgent(ref AgentEnv ag)
         {
             agentListm.Remove(ag);
         }
 
-        public void launchAgents()
-        {
-            foreach (AgentEnv ag in agentListm)
-            {
-                ag.doSomething();
-            }
-        }
+        
 
         private bool isPathLegal(Coordinates start, Coordinates finish)
-        {
-            bool noWalls = !walls.haveIntersections(new Segment(start, finish));
+        {//Checks if an agent can make step from start to finish postion
+            bool noWalls = !wallList.haveIntersections(new Segment(start, finish));
             bool inRange = (finish.x < 1.0f && finish.x > 0.0f && finish.y < 1.0f && finish.y > 0.0f);
             return noWalls && inRange;
         }
 
         private bool canSee (Coordinates start, Coordinates finish) 
-        {
-            bool noWalls = !walls.haveIntersections(new Segment(start, finish));
+        {//Checks if there is line of sight between two points
+            bool noWalls = !wallList.haveIntersections(new Segment(start, finish));
             bool inRange = finish.x < 1.0f && finish.x > 0.0f && finish.y < 1.0f && finish.y > 0.0f;
             return noWalls && inRange;
         }
 
 
-        private bool canCommunicate (AgentEnv sender, AgentEnv reciever){
+        private bool canCommunicate (AgentEnv sender, AgentEnv reciever)
+        {//Checks if sender can send messages to reciever
             return (sender.getCoord() - reciever.getCoord()).norm() < sender.getCommRadius();
         }
 
-        private AgentEnv findAgent ( Int32 id) {
+        private AgentEnv findAgent ( Int32 id) 
+        {
             return agentListm.Find(
                 delegate(AgentEnv ag)
                 {
@@ -136,7 +142,7 @@ namespace agentSpace
         }
 
         private bool canTake(AgentState takerState, AgentState objectState)
-        {
+        {//Checks the compatibility of two agent types, when one trying to pick up another
             if (takerState == AgentState.Searching && objectState == AgentState.Find_Me)
             {
                 return true;
@@ -145,18 +151,21 @@ namespace agentSpace
         }
 
         bool canTouch1(Coordinates point, ref AgentEnv client)
-        {
+        {//Checks if one agent is in proper distance to pick up another agent
             Coordinates pos = client.getCoord();
             return (isPathLegal(pos, point) && ((pos - point).norm() < touchDist));
         }
 
+        #endregion
 
-        //Interface elements for agents
-        bool IAgentFunctions.askStep(Coordinates vec, float speedPercent, ref AgentEnv client)
-        {
+
+        #region IAgentFunctuins implementation
+
+        bool IAgentFunctions.askStep(Coordinates direction, float speedPercent, ref AgentEnv client)
+        {//Try to make step in specific direction. The length = max(speedPercent,1) * maxSpeed
             Coordinates pos = client.getCoord(), des;
             float perc = Math.Min(Math.Max(0.0f, speedPercent), 1.0f);
-            des = pos + (vec.normalize()) * (perc * client.getSpeed());
+            des = pos + (direction.normalize()) * (perc * client.getSpeed());
             if (isPathLegal(pos, des))
             {
                 client.setCoord(des);
@@ -169,25 +178,25 @@ namespace agentSpace
         }
 
         bool IAgentFunctions.canTouch(Coordinates point, ref AgentEnv client)
-        {
+        {//Check if the agent can grab object in specific point
             return canTouch1(point, ref client);
         }
 
-        List<AgentCutaway> IAgentFunctions.agentsInRange(ref AgentEnv agent)
-        {//Returns list of Agents Cutaways, that asking-agent can see
-            Coordinates obs = agent.getCoord();
+        List<AgentCutaway> IAgentFunctions.agentsInRange(ref AgentEnv client)
+        {//Returns list of Agents Cutaways of observable agents
+            Coordinates obs = client.getCoord();
             List<AgentCutaway> rez = new List<AgentCutaway>();
             foreach (AgentEnv ag in agentListm)
             {
-                if (ag.getTypeName() == AgentType.Finder && agent.getTypeName() == AgentType.Finder &&
-                    canCommunicate(agent, ag))
+                if (ag.getTypeName() == AgentType.Finder && client.getTypeName() == AgentType.Finder &&
+                    canCommunicate(client, ag))
                 {
                     rez.Add(ag.getCutaway());
                 }
 
-                else if ((ag.getCoord() - obs).norm() < agent.getViewRadius() &&
+                else if ((ag.getCoord() - obs).norm() < client.getViewRadius() &&
                       canSee(obs, ag.getCoord()) &&
-                      ag.getID() != agent.getID())
+                      ag.getID() != client.getID())
                 {
                     rez.Add(ag.getCutaway());
                 }
@@ -207,24 +216,23 @@ namespace agentSpace
             }
             else
             {
-                //Console.WriteLine("takeObj = false");
                 return false;
             }
         }
 
         void IAgentFunctions.changeAgentColor(Color col, ref AgentEnv agent)
-        {
+        {//Change own color
             agent.imageSetColor(col);
         }
 
 
         List<Wall> IAgentFunctions.wallsAround(ref AgentEnv agent)
-        {
-            return walls.wallsAroundPoint(agent.getCoord(), agent.getViewRadius());
+        {// Returns List of observable walls
+            return wallList.wallsAroundPoint(agent.getCoord(), agent.getViewRadius());
         }
 
         bool IAgentFunctions.sendCellMatrix(int recieverID, ref AgentEnv sender)
-        {
+        {// Send own search matrix to another agent
             AgentEnv reciever = findAgent(recieverID);
             if (canCommunicate(sender, reciever) &&
                 sender.getTypeName() == AgentType.Finder &&
@@ -237,26 +245,30 @@ namespace agentSpace
             }
             return false;
         }
-                
 
-        
-        //agentEnv functions
+        #endregion
 
 
-        //Functions for user
+        #region Functions for user
+
+
+        //Initialize and add agents of corresponding types
         public AgentEnv createDummy1()
         {
-            AgentInfo info = new AgentInfo(Color.Green, 0.01f, AgentType.Dummy, generateID(), AgentState.Searching, Average.commRadius);
-            AgentEnv env = new AgentEnv(0.5f, 0.5f, Average.speed, Average.viewRadius, info);
+            AgentInfo info = new AgentInfo(Color.Green, 0.01f, AgentType.Dummy, generateID(), AgentState.Searching, Average.commRadius,
+                new Coordinates(0.5f, 0.5f), Average.speed / 5, Average.viewRadius);
+            AgentEnv env = new AgentEnv(Average.speed, Average.viewRadius, info);
             Agent bill = new Dummy1(ref env);
             env.setAgent(bill);
             addAgent(ref env);
             return env;
         }
 
-        public AgentEnv createLittleGirl1() {
-            AgentInfo info = new AgentInfo(Color.Pink, 0.005f, AgentType.Little_Girl, generateID(), AgentState.Find_Me, Average.commRadius);
-            AgentEnv env = new AgentEnv(0.5f, 0.5f, Average.speed, Average.viewRadius, info);
+        public AgentEnv createLittleGirl1()
+        {
+            AgentInfo info = new AgentInfo(Color.Pink, 0.005f, AgentType.Little_Girl, generateID(), AgentState.Find_Me, float.Epsilon,
+                new Coordinates(0.5f, 0.5f), Average.speed / 5, Average.viewRadius);
+            AgentEnv env = new AgentEnv( Average.speed, Average.viewRadius, info);
             Agent nancy = new LittleGirl1(ref env);
             env.setAgent(nancy);
             addAgent(ref env);
@@ -265,20 +277,30 @@ namespace agentSpace
 
         public AgentEnv createFinder1()
         {
-            AgentInfo info = new AgentInfo(Color.Magenta, 0.01f, AgentType.Finder, generateID(), AgentState.Searching,Average.commRadius);
-            
-            AgentEnv env = new AgentEnv(0.5f, 0.5f, Average.speed, Average.viewRadius, info); //причесать это и перенести в info
+            AgentInfo info = new AgentInfo(Color.Magenta, 0.01f, AgentType.Finder, generateID(),
+                                            AgentState.Searching,Average.commRadius,
+                                            new Coordinates(0.5f, 0.5f), Average.speed/5, Average.viewRadius);
+            AgentEnv env = new AgentEnv(Average.speed/5, Average.viewRadius, info); //причесать это и перенести в info
             Agent holmes = new Finder1(ref env);
             env.setAgent(holmes);
             addAgent(ref env);
             return env;
         }
 
-        
-        // WALLS functions
+
         public void addWall(Segment seg)
         {
-            walls.addCommonWall(seg);
+            wallList.addCommonWall(seg);
         }
+        #endregion
+
+
+        #region Other functions
+        private Int32 generateID()
+        {
+            generatorID++;
+            return generatorID;
+        }
+        #endregion
     }
 }

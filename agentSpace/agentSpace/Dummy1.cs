@@ -22,11 +22,9 @@ namespace agentSpace
 
         public override void doSomething()
         {
-            //Console.WriteLine("DoSomething()");
             wallsAround();
             if (!grabObjectsAround())
             {
-                //Console.WriteLine("Can touch aim?");
                 if (canTouch(aim))
                 {
                     genAim();
@@ -44,35 +42,28 @@ namespace agentSpace
         }
 
         private bool grabObjectsAround() {
-            //Console.WriteLine("Grab objects Around()");
             List<AgentCutaway> cuts = lookAround();
             bool found = false;
             foreach (AgentCutaway cut in cuts) {
                 if (cut.type == AgentType.Little_Girl && cut.state == AgentState.Find_Me)
                 {
-                   // aim = cut.pos;
-                   // Console.WriteLine("Objectname = " + cut.state);
                     changeMyColor(Color.Blue);
                     setAim(cut.pos);
                     found = grabObject(cut.agentID);
-                   // Console.WriteLine("Returned true");
                     return found;
                 }
             }
-            //Console.WriteLine("Returned false");
             return false;
         }
 
 
         private void genAim() {
-           // Console.WriteLine("GenAim()");
             Coordinates coord = new Coordinates((float)randGen.NextDouble(), (float)randGen.NextDouble());
             setAim(coord);
         }
 
         private void moveToAim()
         {
-            //Console.WriteLine("MoveToAim()");
             Coordinates vec = aim - getMyPos();
             float perc = vec.norm()/getMySpeed();
             if (makeStep(vec, perc) == false)

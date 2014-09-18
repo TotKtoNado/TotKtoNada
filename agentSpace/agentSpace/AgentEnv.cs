@@ -7,12 +7,12 @@ using System.Drawing;
 
 namespace agentSpace
 { 
-    public class AgentEnv : Element
+    public class AgentEnv
     //This class stores properties of agent
     {
-        private Coordinates coord;
-        private float speed;
-        private float viewRadius;
+        //private Coordinates coord;
+        //private float speed;
+        //private float viewRadius;
 
         private IAgentFunctions server;
         private Agent agent;
@@ -24,24 +24,23 @@ namespace agentSpace
         {
             float x = (float) randGen.NextDouble();
             float y = (float) randGen.NextDouble();
-            coord = new Coordinates(x, y);
-            speed = 0.02f;
+            info.coord = new Coordinates(x, y);
+            info.speed = 0.02f;
         }
 
-        public AgentEnv(float x, float y, float speed_, float radius, AgentInfo info_)
+        public AgentEnv(float speed_, float radius, AgentInfo info_)
         {
-            coord = new Coordinates(x, y);
-            speed = speed_;
-            viewRadius = radius;
+            info.speed = speed_;
+            info.viewRadius = radius;
             info = info_;
         }
 
         //drawings
-        public override void draw(System.Windows.Forms.PaintEventArgs e)
+        public void draw(System.Windows.Forms.PaintEventArgs e)
         {
             float drawRad = info.agentRadius;
-            int x = (int)((coord.x - drawRad/2.0f)* e.ClipRectangle.Width ) ;
-            int y = (int)((coord.y -  drawRad/2.0f)* e.ClipRectangle.Height );
+            int x = (int)((info.coord.x - drawRad/2.0f)* e.ClipRectangle.Width ) ;
+            int y = (int)((info.coord.y - drawRad / 2.0f) * e.ClipRectangle.Height);
             int w = (Int32)(drawRad * e.ClipRectangle.Width);
             int h = (Int32)(drawRad * e.ClipRectangle.Height);
             Rectangle rec = new Rectangle(x, y, w, h);
@@ -61,14 +60,15 @@ namespace agentSpace
             }
         }
 
+        #region Setters / getters
 
-        //setters getters
         public void setBoard(IAgentFunctions ser)
         {
             server = ser;
         }
 
-        public IAgentFunctions getBoard () {
+        public IAgentFunctions getBoard()
+        {
             return server;
         }
 
@@ -79,24 +79,31 @@ namespace agentSpace
 
         public void setCoord(Coordinates coord_)
         {
-            //Console.WriteLine("Agent:" + getTypeName() + "," + "changing Coord from" + getCoord().ToString() + " to " + coord_.ToString());
-            coord.safeAssign(coord_.x,coord_.y);
+            info.coord.safeAssign(coord_.x, coord_.y);
         }
 
         public Coordinates getCoord()
         {
-            //Console.WriteLine("Agent:" + getTypeName() + "," + "Have coords" + coord);
-            return coord;
+            return info.coord;
+        }
+
+        public void setSpeed(float speed_)
+        {
+            info.speed = speed_;
         }
 
         public float getSpeed()
         {
-            return speed;
+            return info.speed;
         }
 
+        public void setViewRadius(float radius_)
+        {
+            info.viewRadius = radius_;
+        }
         public float getViewRadius()
         {
-            return viewRadius;
+            return info.viewRadius;
         }
 
         public float getCommRadius()
@@ -106,7 +113,7 @@ namespace agentSpace
 
         public AgentCutaway getCutaway()
         {
-            AgentCutaway visit = new AgentCutaway(info.agentType, info.agentID, getCoord(),info.agentState);
+            AgentCutaway visit = new AgentCutaway(info.agentType, info.agentID, getCoord(), info.agentState);
             return visit;
         }
 
@@ -129,6 +136,10 @@ namespace agentSpace
         {
             info.agentState = state;
         }
+        
+        #endregion
+
+        #region Immage settings
 
 
         public void imageSetColor(Color col)
@@ -141,10 +152,11 @@ namespace agentSpace
             info.agentRadius = rad;
         }
 
-        
+
+        #endregion
         
 
-        public void doSomething() // дописать
+        public void doSomething() 
         {
             agent.doSomething();
         }

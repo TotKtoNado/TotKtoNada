@@ -18,15 +18,23 @@ namespace agentSpace
         public Int32 agentID;
         public AgentState agentState;
         public float communicteRadius;
+        public Coordinates coord;
+        public float speed;
+        public float viewRadius;
 
-        public AgentInfo(Color col, float rad, AgentType agType, Int32 ID, AgentState state, float communicateRad)
+        public AgentInfo(Color colour_, float radius_, AgentType agType_, 
+                        Int32 ID_, AgentState state_, float communicateRad_,
+                        Coordinates coord_, float speed_, float viewRadius_)
         {
-            agentID = ID;
-            agentColor = col;
-            agentRadius = rad;
-            agentType = agType;
-            agentState = state;
-            communicteRadius = communicateRad;
+            agentID = ID_;
+            agentColor = colour_;
+            agentRadius = radius_;
+            agentType = agType_;
+            agentState = state_;
+            communicteRadius = communicateRad_;
+            coord = coord_;
+            speed = speed_;
+            viewRadius = viewRadius_;
         }
         
     }
