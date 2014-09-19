@@ -22,15 +22,11 @@ namespace agentSpace
             Coordinates pos = new Coordinates(0.2f, 0.2f);
             //bill1 = board.createDummy1();
             AgentEnv bill2 = board.createFinder1();
-            AgentEnv nancy;
-            for (int i = 0; i < 10; i++)
-            {
-                nancy = board.createLittleGirl1();
-                nancy.setCoord(Coordinates.randomCoord());
-            }
+            AgentEnv nancy = board.createLittleGirl1(); 
             //bill1.setCoord(pos);
             bill2.setCoord(pos* 4.9f);
             AgentEnv iggy;
+            nancy.setCoord(new Coordinates(0.49f, 0.51f));
             //Console.WriteLine(pos.norm().ToString());
             for (int i = 0; i < 5; i++)
             {
