@@ -6,9 +6,6 @@ namespace agentSpace
     {
         public float x { get; set; }
         public float y { get; set; }
-        
-        private static Random rand = new Random();
-
         public Coordinates(float x_, float y_)
         {
             x = x_;
@@ -20,15 +17,6 @@ namespace agentSpace
             x = 0;
             y = 0;
         }
-
-        public static Coordinates randomCoord()
-        {
-            Coordinates coord = new Coordinates() ;
-            coord.x = (float)rand.NextDouble();
-            coord.y = (float)rand.NextDouble();
-            return coord;
-        }
-
 
         public static float area(Coordinates a, Coordinates b, Coordinates c)
         {
