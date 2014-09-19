@@ -6,8 +6,24 @@ using System.Threading.Tasks;
 
 namespace agentSpace
 {
-    class Controller
+    class Controller : IWalker
     {
+        private AgentEnv env;
+
+        
+        protected Controller(ref AgentEnv env_)
+        {
+            env = env_;
+        }
+
+        #region AgentActions
+
+        public bool makeStep(Coordinates vec, float speedPerc)
+        {
+            return env.getBoard().askStep(vec, speedPerc, ref env);
+        }
+
+        #endregion
 
     }
 }

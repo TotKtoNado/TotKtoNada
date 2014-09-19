@@ -75,6 +75,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="IAgentFunctions.cs" />
+    <Compile Include="IWalker.cs" />
     <Compile Include="LittleGirl.cs" />
     <Compile Include="LittleGirl1.cs" />
     <Compile Include="ObstacleList.cs" />
