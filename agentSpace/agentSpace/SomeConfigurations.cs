@@ -12,4 +12,9 @@ namespace agentSpace
         public static float viewRadius = 0.03f;
         public static float commRadius = 0.08f;
     }
+
+    struct Standarts
+    {
+        public static float touchDist = 0.01f;
+    }
 }

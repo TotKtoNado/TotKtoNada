@@ -94,6 +94,7 @@ namespace agentSpace
                 {
                     aim = cut.pos;
                     found = grabObject(cut.agentID);
+                    Console.WriteLine(found);
                     return found;
                 }
                 else if (cut.type == AgentType.Finder && cellsUpdated)

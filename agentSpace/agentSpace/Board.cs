@@ -9,7 +9,7 @@ namespace agentSpace
     {
         #region Constants
 
-        private const float touchDist = 0.002f;
+        //private const float touchDist = 0.002f;
 
         #endregion
 
@@ -153,7 +153,7 @@ namespace agentSpace
         bool canTouch1(Coordinates point, ref AgentEnv client)
         {//Checks if one agent is in proper distance to pick up another agent
             Coordinates pos = client.getCoord();
-            return (isPathLegal(pos, point) && ((pos - point).norm() < touchDist));
+            return (isPathLegal(pos, point) && ((pos - point).norm() < Standarts.touchDist));
         }
 
         #endregion
