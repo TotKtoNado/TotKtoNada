@@ -73,6 +73,12 @@ namespace GeneralPackage.GameData
             completeDelete();
         }
 
+        public IReadOnlyDictionary<int, Agent> getDictionary()
+        {
+            return list;
+        }
+
+
         #endregion
 
 

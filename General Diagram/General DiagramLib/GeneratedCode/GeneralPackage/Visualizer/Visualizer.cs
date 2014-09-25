@@ -4,36 +4,22 @@
 //     В случае повторного создания кода изменения, внесенные в этот файл, будут потеряны.
 // </auto-generated>
 //------------------------------------------------------------------------------
-namespace GeneralPackage.GameData
+namespace GeneralPackage.Visualizer
 {
+	using GeneralPackage.GameData;
 	using System;
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Text;
 
-	public class Board
+	public class Visualizer
 	{
-        public Board()
+        protected Board board;
+
+        protected Visualizer(ref Board board)
         {
-            walls = new WallList();
-            agents = new AgentList();
+            this.board = board;
         }
-
-		public WallList Walls
-		{
-            get { return walls; }
-		}
-
-		public AgentList Agents
-		{
-            get { return agents; }
-		}
-
-        private WallList walls;
-        private AgentList agents;
-
-        
-
 	}
 }
 
