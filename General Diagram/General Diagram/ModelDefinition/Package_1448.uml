@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="1bf31c32-6fb3-4c78-bbc7-bbf00a3601a1"
+  name="Visualizer" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <importedPackagesInternal>
+    <packageImport
+      Id="a6ecc626-ba0c-4fc5-9085-a159a1f595ff"
+      visibility="Public">
+      <packageMoniker
+        Id="a1fdeb68-d40f-46ad-b26a-dfa19a96cdbf"
+        LastKnownName="GameData"
+        LastKnownLocation="Package_1415.uml" />
+      <description>
+</description>
+    </packageImport>
+  </importedPackagesInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="050e4f68-3caf-45ca-aa7d-14fcb2a81582"
+        name="Screen"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="592dcf57-37da-4835-8b79-2da0dfad78af"
+        name="Visualizer"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="11412871-8ab0-4a30-bbc0-73818e6035c7"
+            isDerived="false"
+            sourceEndRoleName="Vizualizer"
+            targetEndRoleName="Screen"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="050e4f68-3caf-45ca-aa7d-14fcb2a81582"
+              LastKnownName="Screen"
+              LastKnownLocation="Package_1448.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="353e80da-8f31-4039-bd06-f61150740f65"
+                  name="Vizualizer"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Shared"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="7fb9b3b8-b09f-4df2-98b2-6c1c9b34f030"
+                  name="Screen"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="1d3a71fd-8cff-4ee8-bfc4-2e8151e91e9b"
+        name="CommonVisualizer"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <description>Отображает всё игровое поле</description>
+        <generalsInternal>
+          <generalization
+            Id="287ef14a-e082-4dc1-834b-fba15f22cbcf"
+            isSubstitutable="false">
+            <classMoniker
+              Id="592dcf57-37da-4835-8b79-2da0dfad78af"
+              LastKnownName="Visualizer"
+              LastKnownLocation="Package_1448.uml" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association
+            Id="7af292ef-a2bd-45da-851b-478f2fc41380"
+            isDerived="false"
+            sourceEndRoleName="CommonVisualizer"
+            targetEndRoleName="Board"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="274e6701-7c13-4d08-9e27-329519a3e14e"
+              LastKnownName="Board"
+              LastKnownLocation="Package_1415.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="b57466f2-9e89-4b64-bbcc-c6eb094cb3da"
+                  name="CommonVisualizer"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Shared"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="866cbe01-f991-43aa-a303-de1efdc947ae"
+                      name="Lower"
+                      value="0" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="cd639ead-d817-4345-8b03-0cb50cca2d15"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="360c47c5-ae1e-47d4-80e4-92525c57ac9e"
+                  name="Board"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="80aa2945-7f5d-4217-9ee8-455215297466"
+        name="PersonalVisualizer"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <description>Отображает видимость только одного агента</description>
+        <generalsInternal>
+          <generalization
+            Id="622eea53-2d1e-459b-8149-f6d226625a90"
+            isSubstitutable="false">
+            <classMoniker
+              Id="592dcf57-37da-4835-8b79-2da0dfad78af"
+              LastKnownName="Visualizer"
+              LastKnownLocation="Package_1448.uml" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association
+            Id="97dc304d-5bfb-4eab-8650-af7ab614599d"
+            isDerived="false"
+            sourceEndRoleName="PersonalVisualizer"
+            targetEndRoleName="Board"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="274e6701-7c13-4d08-9e27-329519a3e14e"
+              LastKnownName="Board"
+              LastKnownLocation="Package_1415.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="684c37f9-e431-4350-a8b2-57edfeb6ec99"
+                  name="PersonalVisualizer"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Shared"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="2195c473-7666-43ec-9d50-367971283c69"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="64350e86-e562-4d60-8ba0-4f67fb769841"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="cffb0e1d-0b5d-46a3-bf50-269fa2f413ce"
+                  name="Board"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="ae920562-0106-4cf2-9b7c-74cf7df24506"
+            isDerived="false"
+            sourceEndRoleName="PersonalVisualizer"
+            targetEndRoleName="Agent"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="a50c81c7-b9c0-452f-a354-661b36e02970"
+              LastKnownName="Agent"
+              LastKnownLocation="Package_1415.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="6fcde8a0-d152-4ccf-93b7-159a48c7450f"
+                  name="PersonalVisualizer"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Shared"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="a0f97c5b-b466-4adc-a83c-4a191e3a4614"
+                  name="Agent"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

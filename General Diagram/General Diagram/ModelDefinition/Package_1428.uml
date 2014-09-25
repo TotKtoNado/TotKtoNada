@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="d34ce7a7-6f56-411a-9618-b82931b1b40a"
+  name="GeneralPackage" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <packagedElements>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="da586597-9446-4aec-bcc2-afe02e5a18cc"
+        LastKnownName="Controller"
+        LastKnownLocation="Package1_1417.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="a1fdeb68-d40f-46ad-b26a-dfa19a96cdbf"
+        LastKnownName="GameData"
+        LastKnownLocation="Package_1415.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="203535af-c293-41e9-b226-17cd8d09635f"
+        LastKnownName="Performer"
+        LastKnownLocation="Package_1417.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="1bf31c32-6fb3-4c78-bbc7-bbf00a3601a1"
+        LastKnownName="Visualizer"
+        LastKnownLocation="Package_1448.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="77602009-2978-4961-92cd-d3f899450475"
+        LastKnownName="FormInterface"
+        LastKnownLocation="Package_1658.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="460cebf8-5c77-420f-ba29-4838fc0a72a9"
+        name="Launcher"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="b845e694-146f-4a12-9b73-f7715f0f8882"
+            isDerived="false"
+            sourceEndRoleName="Launcher"
+            targetEndRoleName="Board"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="274e6701-7c13-4d08-9e27-329519a3e14e"
+              LastKnownName="Board"
+              LastKnownLocation="Package_1415.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="b2b952d8-9f6c-457b-8cfb-20b47243f18b"
+                  name="Launcher"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Composite"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="ec0c21b7-8425-4167-ab60-0035aecbf06f"
+                  name="Board"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="true" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="90d950c1-6313-4e90-bee7-5571ca6a68ce"
+        LastKnownName="Structures"
+        LastKnownLocation="Package_2101.uml" />
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

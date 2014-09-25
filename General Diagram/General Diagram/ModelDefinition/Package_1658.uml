@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel"
+  dslVersion="1.0.0.0"
+  Id="77602009-2978-4961-92cd-d3f899450475"
+  name="FormInterface" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <suppliersInternal>
+    <dependency
+      Id="9535fee2-32e3-4293-99c6-29e1ed920f9d">
+      <packageMoniker
+        Id="a1fdeb68-d40f-46ad-b26a-dfa19a96cdbf"
+        LastKnownName="GameData"
+        LastKnownLocation="Package_1415.uml" />
+    </dependency>
+  </suppliersInternal>
+  <importedPackagesInternal>
+    <packageImport
+      Id="97d4cadb-3adf-41e8-9668-28d31db286e9"
+      visibility="Public">
+      <packageMoniker
+        Id="da586597-9446-4aec-bcc2-afe02e5a18cc"
+        LastKnownName="Controller"
+        LastKnownLocation="Package1_1417.uml" />
+    </packageImport>
+  </importedPackagesInternal>
+</package>

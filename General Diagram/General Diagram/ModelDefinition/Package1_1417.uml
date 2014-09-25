@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="da586597-9446-4aec-bcc2-afe02e5a18cc"
+  name="Controller" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <suppliersInternal>
+    <dependency
+      Id="8db58ff7-48f2-42bc-84e2-41605296bb98">
+      <packageMoniker
+        Id="203535af-c293-41e9-b226-17cd8d09635f"
+        LastKnownName="Performer"
+        LastKnownLocation="Package_1417.uml" />
+    </dependency>
+  </suppliersInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <Interface
+        Id="3151b9bb-8494-4ddd-8ff7-e1a1d524f84d"
+        name="IAgentTypeN"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="843f4cbe-ede0-4ef2-86b3-88d26067caf0"
+        name="IAgentType1"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="48c57c92-a90e-4564-a3b2-efd1f132f8da"
+        name="IAgentType2"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="71792307-7a63-443b-abaf-24a927fe2a3b"
+        name="AgentController"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <interfaceRealization
+            Id="901a110f-34e4-4a38-8fd5-0da0c2155b96">
+            <interfaceMoniker
+              Id="843f4cbe-ede0-4ef2-86b3-88d26067caf0"
+              LastKnownName="IAgentType1"
+              LastKnownLocation="Package1_1417.uml" />
+          </interfaceRealization>
+          <interfaceRealization
+            Id="24032046-fceb-4a91-a986-f3865e61d273">
+            <interfaceMoniker
+              Id="48c57c92-a90e-4564-a3b2-efd1f132f8da"
+              LastKnownName="IAgentType2"
+              LastKnownLocation="Package1_1417.uml" />
+          </interfaceRealization>
+          <interfaceRealization
+            Id="074cf851-27cf-4031-819c-faed12df4384">
+            <interfaceMoniker
+              Id="3151b9bb-8494-4ddd-8ff7-e1a1d524f84d"
+              LastKnownName="IAgentTypeN"
+              LastKnownLocation="Package1_1417.uml" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <targetEnds>
+          <association
+            Id="511b4a0f-6c85-4ce3-8fcf-977ebff146ea"
+            isDerived="false"
+            sourceEndRoleName="AgentController"
+            targetEndRoleName="CommandPerformer"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="000f6e77-c483-4312-80d1-83b02560036d"
+              LastKnownName="CommandPerformer"
+              LastKnownLocation="Package_1417.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="bfdddfef-c9a6-4f82-a416-98d1a4530d63"
+                  name="AgentController"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Shared"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="80eebee3-7980-4eec-a713-0860b7eb0643"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="62b8dc03-3736-4719-a3b3-b6086093fde0"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="51e4fc95-741c-4ff2-9ecc-2ee9ecdb768a"
+                  name="CommandPerformer"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

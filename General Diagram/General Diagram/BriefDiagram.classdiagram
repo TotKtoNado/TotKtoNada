@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="0e20ab0b-4cd1-473f-a16e-2c06bc2b8802" name="SecondTry" linkedPackageId="f6827e12-4bf7-4f97-8ac6-11006e36a983" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <ownedCommentsInternal>
+    <comment Id="6db2e270-0dc9-4069-8747-a03a27f60a52">
+      <elementDefinition Id="fa270f10-98d0-4ead-b53e-519d4ef1b36d" />
+      <body>Функциональные элементы:
+1) Хранение данных об игровом мире
+2) Выполнение запросов агентов
+3) Визуализцая мира на экран
+4) Контроллер, предоставляемый пользователю
+5) Инициализирующий класс (предоставляет интерфейс пользователю)
+6) Графический интерфейс
+7) Оповещение агента о событиях, которые с ним происходят
+</body>
+    </comment>
+  </ownedCommentsInternal>
+  <appliedStereotypesInternal>
+    <stereotypeInstance Id="cd7ea778-9cad-4973-9f15-d9d5cadca435" name="namespace" profile="CSharpProfile">
+      <elementDefinition Id="492ddaa4-d6cb-4b90-99d8-0907f800528d" />
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="2c2820c9-21ae-4f00-9d4d-c0079b10f9c5">
+          <propertyInstance Id="69bb0ee2-11f7-493f-ac4a-2d118e654f52" name="BaseName">
+            <elementDefinition Id="673b1ab5-a4e8-458e-9465-68c3550f967a" />
+          </propertyInstance>
+          <elementDefinition Id="48b63767-9e9e-420b-9bb2-62cb126e282d" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="2b19ee13-f68a-4224-ae82-dd0aeb954149">
+          <propertyInstance Id="eb3e2290-186e-4073-bf94-559f6df88972" name="ClrAttributes">
+            <elementDefinition Id="368a9d51-8de4-4e9f-93a6-498bf0a089be" />
+          </propertyInstance>
+          <elementDefinition Id="53a2a234-d930-424b-bef1-a78bed003203" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="2fe6a573-5641-411f-a164-f1624fb236b2">
+          <propertyInstance Id="c0c82e77-7a4e-40a8-aca6-e33d18c3a2ba" name="Usings">
+            <elementDefinition Id="473ac2f3-3e72-48f9-8c77-e59c6756694b" />
+          </propertyInstance>
+          <elementDefinition Id="3535d489-a592-4637-a426-65d9cd10c560" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+    <stereotypeInstance Id="f8386f5f-6cfa-4ba5-8062-eb59903e09c0" name="TextTemplateBindings" profile="TextTemplateBindings">
+      <elementDefinition Id="594f6a6d-69e0-4664-b842-a1ab6af53538" />
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="3cefd96b-ca0e-4cc8-98d8-cadd92c28917">
+          <propertyInstance Id="34fbfb04-ae66-446c-bc43-300a2884857b" name="Alias" value="ClassTemplate|EnumTemplate|InterfaceTemplate|StructTemplate">
+            <elementDefinition Id="20096dc7-b2ea-482d-a50c-5affbe4d66aa" />
+          </propertyInstance>
+          <elementDefinition Id="aae8298d-c0be-4828-a46f-d160fe4b0747" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="53d083f6-7e75-4df2-a064-4c4a11c093b6">
+          <propertyInstance Id="3ce1e743-2eac-4e81-b332-47916594733c" name="TemplateFilePath" value="ClassTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\ClassTemplate.t4|EnumTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\EnumTemplate.t4|InterfaceTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\InterfaceTemplate.t4|StructTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\StructTemplate.t4">
+            <elementDefinition Id="ffa057de-fb71-42d4-837e-caf60d3291e5" />
+          </propertyInstance>
+          <elementDefinition Id="e3de4545-879d-40a9-a22b-046c2a83b598" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="bec77c67-6c6c-4a63-9ce5-9d4599959be3">
+          <propertyInstance Id="241997b1-4d57-40cf-906a-c751bafcde7c" name="ProjectPath" value="ClassTemplate=..\General DiagramLib\General DiagramLib.csproj|EnumTemplate=..\General DiagramLib\General DiagramLib.csproj|InterfaceTemplate=..\General DiagramLib\General DiagramLib.csproj|StructTemplate=..\General DiagramLib\General DiagramLib.csproj">
+            <elementDefinition Id="bfb49f50-1ba0-4103-9581-eafd360bbf46" />
+          </propertyInstance>
+          <elementDefinition Id="2a073129-0e74-4acd-a1e0-b320a9ccf1d2" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="1277c36c-8f60-47f0-a489-f6de2ea53d9b">
+          <propertyInstance Id="4166b2d5-43f5-4e67-9455-b3a4cf40aaf0" name="TargetDirectory" value="ClassTemplate=GeneratedCode\{PackageStructure}|EnumTemplate=GeneratedCode\{PackageStructure}|InterfaceTemplate=GeneratedCode\{PackageStructure}|StructTemplate=GeneratedCode\{PackageStructure}">
+            <elementDefinition Id="72524627-fad1-4da0-a8e0-d8a147d0bf48" />
+          </propertyInstance>
+          <elementDefinition Id="6cd41f56-4121-4514-9aa9-d59a2d92a991" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="12258c3d-44e7-4e2b-9b1e-da96805a66f5">
+          <propertyInstance Id="5a203420-abea-4e7f-831a-185e749d9662" name="TargetName" value="ClassTemplate={Name}|EnumTemplate={Name}|InterfaceTemplate={Name}|StructTemplate={Name}">
+            <elementDefinition Id="ff95b767-884f-4401-9cd7-7fdd9083733c" />
+          </propertyInstance>
+          <elementDefinition Id="fb0101fc-a955-4886-8e46-0a5a6aa4b151" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="c632ac8a-aa73-4a79-998b-c4826ad405e3">
+          <propertyInstance Id="54884d6c-42ea-4d87-b6e5-4def239b6b24" name="Overwrite" value="ClassTemplate=True|EnumTemplate=True|InterfaceTemplate=True|StructTemplate=True">
+            <elementDefinition Id="21faa516-e53d-4e9d-9c9a-5bd2a9953377" />
+          </propertyInstance>
+          <elementDefinition Id="28141f4f-22b3-40d8-96d9-ba4e97dddc51" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="22979cb8-90e5-4f02-ac30-a5f459e77541">
+          <propertyInstance Id="5ebf9539-6f0c-470e-ba05-0ef524d883bc" name="Parameters">
+            <elementDefinition Id="c07b1055-3d4b-4167-8d4d-996e021e4be2" />
+          </propertyInstance>
+          <elementDefinition Id="42d7eb6c-3255-4236-88ea-ffa065f7bb5a" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+  </appliedStereotypesInternal>
+  <packagedElements>
+    <logicalClassDesignerModelHasPackages>
+      <package Id="3448d831-2488-429f-acba-ea5658063438" name="GameData">
+        <elementDefinition Id="a1fdeb68-d40f-46ad-b26a-dfa19a96cdbf" />
+        <suppliersInternal>
+          <dependency Id="007b0e22-c15d-47a6-ade0-707c78d70d2a">
+            <packageMoniker Id="7a47885c-a366-4e52-973e-85f3cb8ca299" LastKnownName="Controller" />
+            <elementDefinition Id="797668e3-0952-4df7-8496-48c5c9db2763" />
+          </dependency>
+        </suppliersInternal>
+      </package>
+    </logicalClassDesignerModelHasPackages>
+    <logicalClassDesignerModelHasPackages>
+      <package Id="4036caff-a3c8-495b-84dc-e41b536f402c" name="Performer">
+        <elementDefinition Id="203535af-c293-41e9-b226-17cd8d09635f" />
+        <suppliersInternal>
+          <dependency Id="cfbf1887-aade-42f9-801a-e9aaa384393c">
+            <packageMoniker Id="3448d831-2488-429f-acba-ea5658063438" LastKnownName="GameData" />
+            <elementDefinition Id="fa5a3262-138d-4994-88d2-df74e2d49147" />
+          </dependency>
+        </suppliersInternal>
+      </package>
+    </logicalClassDesignerModelHasPackages>
+    <logicalClassDesignerModelHasPackages>
+      <package Id="7a47885c-a366-4e52-973e-85f3cb8ca299" name="Controller">
+        <elementDefinition Id="da586597-9446-4aec-bcc2-afe02e5a18cc" />
+        <suppliersInternal>
+          <dependency Id="22fe50bb-b3ca-4995-a0bb-036c87cc40db">
+            <packageMoniker Id="4036caff-a3c8-495b-84dc-e41b536f402c" LastKnownName="Performer" />
+            <elementDefinition Id="8db58ff7-48f2-42bc-84e2-41605296bb98" />
+          </dependency>
+        </suppliersInternal>
+      </package>
+    </logicalClassDesignerModelHasPackages>
+    <logicalClassDesignerModelHasPackages>
+      <package Id="2c06e965-d1bc-44c3-936b-c4c357ef08c2" name="Visualizer">
+        <elementDefinition Id="1bf31c32-6fb3-4c78-bbc7-bbf00a3601a1" />
+        <importedPackagesInternal>
+          <packageImport Id="70fdb9d6-7a9d-4132-8902-9aa7c73137bf" visibility="Public">
+            <packageMoniker Id="3448d831-2488-429f-acba-ea5658063438" LastKnownName="GameData" />
+            <description>
+</description>
+            <elementDefinition Id="a6ecc626-ba0c-4fc5-9085-a159a1f595ff" />
+          </packageImport>
+        </importedPackagesInternal>
+      </package>
+    </logicalClassDesignerModelHasPackages>
+    <logicalClassDesignerModelHasPackages>
+      <package Id="4e5c3b15-7daf-4b79-a8f2-ee9fcf44ab0a" name="FormInterface">
+        <elementDefinition Id="77602009-2978-4961-92cd-d3f899450475" />
+        <suppliersInternal>
+          <dependency Id="e3d557d6-e404-4efe-82d7-293a7f60caa9">
+            <packageMoniker Id="3448d831-2488-429f-acba-ea5658063438" LastKnownName="GameData" />
+            <elementDefinition Id="9535fee2-32e3-4293-99c6-29e1ed920f9d" />
+          </dependency>
+        </suppliersInternal>
+        <importedPackagesInternal>
+          <packageImport Id="46b16cb6-b0c1-411c-9242-60aecee3530e" visibility="Public">
+            <packageMoniker Id="7a47885c-a366-4e52-973e-85f3cb8ca299" LastKnownName="Controller" />
+            <elementDefinition Id="97d4cadb-3adf-41e8-9668-28d31db286e9" />
+          </packageImport>
+        </importedPackagesInternal>
+      </package>
+    </logicalClassDesignerModelHasPackages>
+  </packagedElements>
+  <package Id="f6827e12-4bf7-4f97-8ac6-11006e36a983" name="General Diagram">
+    <elementDefinition Id="8ae33626-aaf5-4282-95a5-840a0c7468d5" />
+    <profileInstances>
+      <packageHasProfileInstances Id="9ac5f5b4-5b03-4790-a33a-dc3a3c841e26">
+        <profileInstance Id="03629243-29f0-469b-a953-310bd5d162ae" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="85afdccb-ec50-4b56-8702-ba15befaa7b7">
+        <profileInstance Id="4dae6df9-ca75-451a-935d-821c855a0501" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="17a18b64-b9e6-4d3f-9031-68edcf70575a">
+        <profileInstance Id="6e5fc54e-0a75-48b1-9fae-7bcf4fc59d99" name="CSharpProfile">
+          <elementDefinition Id="e5292a25-2506-4ecb-96ed-13a8612c3bdf" />
+        </profileInstance>
+        <elementDefinition Id="090a5153-649f-403e-82d6-12b7e1a0d7d2" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="f07ff7cc-b2f2-4eeb-a765-f2456641a4f7">
+        <profileInstance Id="fb7cced3-276d-47e8-b128-fc34d8139b39" name="TextTemplateBindings">
+          <elementDefinition Id="5c7acf9f-21cf-488d-839a-94362a38edcb" />
+        </profileInstance>
+        <elementDefinition Id="f0954583-85ed-4aff-90ca-41bb47a98f5e" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</logicalClassDesignerModel>

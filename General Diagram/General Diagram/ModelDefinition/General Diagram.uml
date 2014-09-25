@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="8ae33626-aaf5-4282-95a5-840a0c7468d5"
+  name="General Diagram" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <ownedCommentsInternal>
+    <comment
+      Id="f211f666-dedd-4bd1-ba88-3d93b56bbfc4">
+      <body>Функциональные элементы:
+1) Хранение данных об игровом мире
+2) Выполнение запросов агентов
+3) Визуализцая мира на экран
+4) Контроллер, предоставляемый пользователю
+5) Инициализирующий класс (предоставляет интерфейс пользователю)
+6) Графический интерфейс</body>
+    </comment>
+    <comment
+      Id="fa270f10-98d0-4ead-b53e-519d4ef1b36d">
+      <body>Функциональные элементы:
+1) Хранение данных об игровом мире
+2) Выполнение запросов агентов
+3) Визуализцая мира на экран
+4) Контроллер, предоставляемый пользователю
+5) Инициализирующий класс (предоставляет интерфейс пользователю)
+6) Графический интерфейс
+7) Оповещение агента о событиях, которые с ним происходят
+</body>
+    </comment>
+    <comment
+      Id="bd7011bd-567e-4d1a-8d7e-00ff71a708f3">
+      <body>Функциональные элементы:
+1) Хранение данных об игровом мире
+2) Выполнение запросов агентов
+3) Визуализцая мира на экран
+4) Контроллер, предоставляемый пользователю
+5) Инициализирующий класс (предоставляет интерфейс пользователю)
+6) Графический интерфейс
+7) Оповещение агента о событиях, которые с ним происходят
+</body>
+    </comment>
+  </ownedCommentsInternal>
+  <appliedStereotypesInternal>
+    <stereotypeInstance
+      Id="492ddaa4-d6cb-4b90-99d8-0907f800528d"
+      name="namespace"
+      profile="CSharpProfile">
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="48b63767-9e9e-420b-9bb2-62cb126e282d">
+          <propertyInstance
+            Id="673b1ab5-a4e8-458e-9465-68c3550f967a"
+            name="BaseName" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="53a2a234-d930-424b-bef1-a78bed003203">
+          <propertyInstance
+            Id="368a9d51-8de4-4e9f-93a6-498bf0a089be"
+            name="ClrAttributes" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="3535d489-a592-4637-a426-65d9cd10c560">
+          <propertyInstance
+            Id="473ac2f3-3e72-48f9-8c77-e59c6756694b"
+            name="Usings" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+    <stereotypeInstance
+      Id="594f6a6d-69e0-4664-b842-a1ab6af53538"
+      name="TextTemplateBindings"
+      profile="TextTemplateBindings">
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="aae8298d-c0be-4828-a46f-d160fe4b0747">
+          <propertyInstance
+            Id="20096dc7-b2ea-482d-a50c-5affbe4d66aa"
+            name="Alias"
+            value="ClassTemplate|EnumTemplate|InterfaceTemplate|StructTemplate" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="e3de4545-879d-40a9-a22b-046c2a83b598">
+          <propertyInstance
+            Id="ffa057de-fb71-42d4-837e-caf60d3291e5"
+            name="TemplateFilePath"
+            value="ClassTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\ClassTemplate.t4|EnumTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\EnumTemplate.t4|InterfaceTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\InterfaceTemplate.t4|StructTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\StructTemplate.t4" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="2a073129-0e74-4acd-a1e0-b320a9ccf1d2">
+          <propertyInstance
+            Id="bfb49f50-1ba0-4103-9581-eafd360bbf46"
+            name="ProjectPath"
+            value="ClassTemplate=..\General DiagramLib\General DiagramLib.csproj|EnumTemplate=..\General DiagramLib\General DiagramLib.csproj|InterfaceTemplate=..\General DiagramLib\General DiagramLib.csproj|StructTemplate=..\General DiagramLib\General DiagramLib.csproj" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="6cd41f56-4121-4514-9aa9-d59a2d92a991">
+          <propertyInstance
+            Id="72524627-fad1-4da0-a8e0-d8a147d0bf48"
+            name="TargetDirectory"
+            value="ClassTemplate=GeneratedCode\{PackageStructure}|EnumTemplate=GeneratedCode\{PackageStructure}|InterfaceTemplate=GeneratedCode\{PackageStructure}|StructTemplate=GeneratedCode\{PackageStructure}" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="fb0101fc-a955-4886-8e46-0a5a6aa4b151">
+          <propertyInstance
+            Id="ff95b767-884f-4401-9cd7-7fdd9083733c"
+            name="TargetName"
+            value="ClassTemplate={Name}|EnumTemplate={Name}|InterfaceTemplate={Name}|StructTemplate={Name}" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="28141f4f-22b3-40d8-96d9-ba4e97dddc51">
+          <propertyInstance
+            Id="21faa516-e53d-4e9d-9c9a-5bd2a9953377"
+            name="Overwrite"
+            value="ClassTemplate=True|EnumTemplate=True|InterfaceTemplate=True|StructTemplate=True" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="42d7eb6c-3255-4236-88ea-ffa065f7bb5a">
+          <propertyInstance
+            Id="c07b1055-3d4b-4167-8d4d-996e021e4be2"
+            name="Parameters" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+  </appliedStereotypesInternal>
+  <profileInstances>
+    <packageHasProfileInstances
+      Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b">
+      <profileInstance
+        Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791"
+        name="StandardProfileL2" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances
+      Id="29349502-908c-4fda-9054-c48619c59ed0">
+      <profileInstance
+        Id="532ea607-fb19-44b8-8502-3351b05452be"
+        name="StandardProfileL3" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances
+      Id="090a5153-649f-403e-82d6-12b7e1a0d7d2">
+      <profileInstance
+        Id="e5292a25-2506-4ecb-96ed-13a8612c3bdf"
+        name="CSharpProfile" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances
+      Id="f0954583-85ed-4aff-90ca-41bb47a98f5e">
+      <profileInstance
+        Id="5c7acf9f-21cf-488d-839a-94362a38edcb"
+        name="TextTemplateBindings" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <packageHasNamedElement>
+      <Interface
+        Id="bab25135-7bf1-4564-8207-26b58b2e7921"
+        name="UserInterface"
+        isAbstract="false"
+        isLeaf="false">
+        <description>Предоставляет пользователю функции для
+1) Начала игры
+2) Конфигурации игры
+</description>
+      </Interface>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="d34ce7a7-6f56-411a-9618-b82931b1b40a"
+        LastKnownName="GeneralPackage"
+        LastKnownLocation="Package_1428.uml" />
+    </packageHasNamedElement>
+  </packagedElements>
+  <primitiveType
+    Id="220a3521-e091-4221-bae9-3ef9018e845c"
+    name="Integer"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+    name="Boolean"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+    name="String"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="3ab42e7d-4969-445a-b209-471f5cb8209c"
+    name="UnlimitedNatural"
+    isAbstract="false"
+    isLeaf="false" />
+</modelStoreModel>
