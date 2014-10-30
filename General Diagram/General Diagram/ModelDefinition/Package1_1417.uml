@@ -23,9 +23,46 @@
     <packageHasNamedElement>
       <Interface
         Id="843f4cbe-ede0-4ef2-86b3-88d26067caf0"
-        name="IAgentType1"
+        name="IWalker"
         isAbstract="false"
-        isLeaf="false" />
+        isLeaf="false">
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="7edeaeb4-271c-46ff-a08d-f4974abdf64d"
+            name="interface"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="c1a84bbc-4b70-4c76-8d2b-07ff9a4dcd69">
+                <propertyInstance
+                  Id="4ce638f9-bad3-4161-b273-7b6ec4def907"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="195729d5-7109-46d4-93f6-26213307fbef">
+                <propertyInstance
+                  Id="cd5f48bf-0f18-4a7b-8b03-6ec7d448256e"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="cf712d52-b24b-45cc-9f21-5755f77a3629">
+                <propertyInstance
+                  Id="1dcfe5e7-3597-44f4-aeb4-ff3cd84ed0f7"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="86562522-2a73-4ad3-b94e-f044c23c8c75">
+                <propertyInstance
+                  Id="4e2ce941-e21c-4cb3-9bb4-6abe066df5d2"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </Interface>
     </packageHasNamedElement>
     <packageHasNamedElement>
       <Interface
@@ -41,12 +78,55 @@
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="700cac01-d3b1-47d5-9821-693c28764a7a"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="672cc69f-92e2-40a5-809a-643d69cf5abf">
+                <propertyInstance
+                  Id="1fc24811-3dc2-469b-b12f-5907a630d457"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="39d4be16-084e-4bf9-a8ec-fa5bd29194b3">
+                <propertyInstance
+                  Id="88726ae7-d800-498a-80f9-573d7d422a41"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="69c4be6e-1d18-46fd-a48e-d4c541cb034b">
+                <propertyInstance
+                  Id="e690f5c0-b813-4a78-bfb5-c0621721c1ef"
+                  name="IsStatic"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="ca20913c-9a64-47af-b679-8ac823b68fd1">
+                <propertyInstance
+                  Id="f488d4d2-752c-46f3-9977-ce1ae63eb7ae"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="9524255b-3e9d-41b6-9f52-bf0ea46df68f">
+                <propertyInstance
+                  Id="f4a1e3bf-9b5a-43f6-8b0c-271e055b299f"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
         <suppliersInternal>
           <interfaceRealization
             Id="901a110f-34e4-4a38-8fd5-0da0c2155b96">
             <interfaceMoniker
               Id="843f4cbe-ede0-4ef2-86b3-88d26067caf0"
-              LastKnownName="IAgentType1"
+              LastKnownName="IWalker"
               LastKnownLocation="Package1_1417.uml" />
           </interfaceRealization>
           <interfaceRealization

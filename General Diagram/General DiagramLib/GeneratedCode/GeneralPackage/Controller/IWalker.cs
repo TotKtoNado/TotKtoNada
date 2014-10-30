@@ -4,41 +4,18 @@
 //     В случае повторного создания кода изменения, внесенные в этот файл, будут потеряны.
 // </auto-generated>
 //------------------------------------------------------------------------------
-namespace GeneralPackage.GameData
+namespace GeneralPackage.Controller
 {
 	using System;
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Text;
-    using Controller;
+    using Structures;
 
-	public class Board
+	public interface IWalker 
 	{
-        public Board()
-        {
-            walls = new WallList();
-            agents = new AgentList();
-        }
+        bool makeStep(Coord direction, double speedPercent);
 
-        #region attributes
-
-        public WallList Walls
-		{
-            get { return walls; }
-		}
-
-		public AgentList Agents
-		{
-            get { return agents; }
-		}
-
-        private WallList walls;
-        private AgentList agents;
-
-        #endregion
-
-
-
-    }
+	}
 }
 

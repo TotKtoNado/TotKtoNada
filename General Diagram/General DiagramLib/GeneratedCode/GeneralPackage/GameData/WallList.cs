@@ -17,15 +17,81 @@ namespace GeneralPackage.GameData
         private List<Segment> list = new List<Segment>();
         internal bool changed = false;
 
-        internal void addWall(Segment seg) {
+        public void addWall(Segment seg) {
             changed = true;
             list.Add(seg);
         }
         
-        internal IReadOnlyCollection<Segment> getList() {
+        public IReadOnlyCollection<Segment> getList() {
             changed = false;
             return list;
         }
+
+        public bool intersectsWalls(Coord start, Coord end, out Coord intersectionPoint)
+        {
+            Segment temp = new Segment(start,end);
+            Coord xy = new Coord ();
+            foreach (Segment seg in list)
+            {
+                if (Intersects(temp, seg, out xy))
+                {
+                    intersectionPoint = xy;
+                    return true;
+                }
+            }
+            intersectionPoint = new Coord();
+            return false;
+        }
+
+        public bool Intersects (Segment AB, Segment CD, out Coord result) {
+          double deltaACy = AB.beg.y - CD.beg.y;
+          double deltaDCx = CD.end.x - CD.beg.x;
+          double deltaACx = AB.beg.x - CD.beg.x;
+          double deltaDCy = CD.end.y - CD.beg.y;
+          double deltaBAx = AB.end.x - AB.beg.x;
+          double deltaBAy = AB.end.y - AB.beg.y;
+
+          double denominator = deltaBAx * deltaDCy - deltaBAy * deltaDCx;
+          double numerator = deltaACy * deltaDCx - deltaACx * deltaDCy;
+
+          if (denominator == 0) {
+            if (numerator == 0) {
+              // collinear. Potentially infinite intersection points.
+              // Check and return one of them.
+              if (AB.beg.x >= CD.beg.x && AB.beg.x <= CD.end.x) {
+                result = AB.beg;
+                return true;
+              } else if (CD.beg.x >= AB.beg.x && CD.beg.x <= AB.end.x) {
+                  result = CD.beg;
+                  return true;
+              } else {
+                result = new Coord();
+                return false;
+              }
+            } else { // parallel
+              result = new Coord();
+              return false;
+            }
+          }
+
+          double r = numerator / denominator;
+          if (r < 0 || r > 1)
+          {
+            result = new Coord();
+            return false;
+          }
+
+          double s = (deltaACy * deltaBAx - deltaACx * deltaBAy) / denominator;
+          if (s < 0 || s > 1)
+          {
+            result = new Coord();
+            return false;
+          }
+
+          result = new Coord{ x= (AB.beg.x + r * deltaBAx), y= (AB.beg.y + r * deltaBAy)};
+          return true;
+    }
+
 	}
 }
 

@@ -4,41 +4,33 @@
 //     В случае повторного создания кода изменения, внесенные в этот файл, будут потеряны.
 // </auto-generated>
 //------------------------------------------------------------------------------
-namespace GeneralPackage.GameData
+namespace GeneralPackage.Structures
 {
 	using System;
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Text;
-    using Controller;
 
-	public class Board
+	public struct AgentCutaway
 	{
-        public Board()
-        {
-            walls = new WallList();
-            agents = new AgentList();
-        }
-
-        #region attributes
-
-        public WallList Walls
+		public int ID
 		{
-            get { return walls; }
+			get;
+			set;
 		}
 
-		public AgentList Agents
+		public Coord coord
 		{
-            get { return agents; }
+			get;
+			set;
 		}
 
-        private WallList walls;
-        private AgentList agents;
+		public AgentType type
+		{
+			get;
+			set;
+		}
 
-        #endregion
-
-
-
-    }
+	}
 }
 

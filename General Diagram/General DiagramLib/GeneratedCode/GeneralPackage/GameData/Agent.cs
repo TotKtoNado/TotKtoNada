@@ -16,7 +16,7 @@ namespace GeneralPackage.GameData
     {
 
         #region constructor
-        internal Agent(ref Eventer eventHadler, int ID)
+        internal Agent(Eventer eventHadler, int ID)
         {
             this.eventer = eventHadler;
             this.id = ID;
@@ -24,7 +24,7 @@ namespace GeneralPackage.GameData
             speed = Average.speed;
             viewRadius = Average.viewRadius;
         }
-        internal Agent(ref Eventer eventHandler, int ID, double speed, double viewRadius, Coord coord)
+        internal Agent(Eventer eventHandler, int ID, double speed, double viewRadius, Coord coord)
         {
             this.eventer = eventHandler;
             this.id = ID;

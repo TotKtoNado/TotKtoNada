@@ -13,37 +13,67 @@ namespace GeneralPackage.Structures
 
     public struct Coord
     {
+        private static Random random = new Random();
 
         #region attributes
 
 
         public double x
         {
-            get;
-            set;
+            get {return X;}
+            set {X = value;}
         }
 
         public double y
         {
-            get;
-            set;
+            get { return Y; }
+            set { Y = value; }
         }
+
+        private double X;
+        private double Y;
 
         #endregion
 
         #region constructor
 
+        public Coord(double x_, double y_) 
+        {
+            X = x_;
+            Y = y_;
+        }
+            
+
         #endregion
 
         public static Coord rand()
         {
-            Random random = new Random();
             return new Coord
             {
                 x = random.NextDouble(),
                 y = random.NextDouble()
             };
                 
+        }
+
+        public static Coord operator +(Coord a, Coord b)
+        {
+            return new Coord(a.x + b.x, a.y + b.y);
+        }
+
+        public static Coord operator -(Coord a, Coord b)
+        {
+            return new Coord(a.x - b.x, a.y - b.y);
+        }
+
+        public override string ToString()
+        {
+            return "( " + x.ToString() + " , " + y.ToString() + ")";
+        }
+
+        public bool inField()
+        {
+            return (x <= 1.0 && x >= 0.0 && y <= 1.0 && y >= 0.0);
         }
 
 

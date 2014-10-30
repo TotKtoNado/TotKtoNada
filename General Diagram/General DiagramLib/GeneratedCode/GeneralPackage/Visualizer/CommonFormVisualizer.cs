@@ -13,49 +13,113 @@ namespace GeneralPackage.Visualizer
 	using System.Text;
     using System.Windows.Forms;
     using System.Drawing;
+    using GeneralPackage.Structures;
 
 	/// <summary>
 	/// Отображает всё игровое поле
 	/// </summary>
 	public class CommonFormVisualizer : Visualizer
     {
+
+        #region Constants
+        private readonly int agentLineWidth = 3;
+        private readonly int wallLineWidth = 1;
+        #endregion
+
+        #region attributes
+
         private PictureBox screen;
+
+        public bool showSightAreas
+        {
+            get;
+            set;
+        }
+
         public bool Active
         {
             get;
             set;
         }
-        #region constructor 
 
-        public CommonFormVisualizer(ref Board board, ref PictureBox screen, bool isActive = true)
-            :base (ref board)
+        #endregion
+
+        #region constructor
+
+        public CommonFormVisualizer( Board board,  PictureBox screen, bool isActive = true)
+            :base ( board)
         {
             Active = isActive;
             this.screen = screen;
+            showSightAreas = false;
         }
 
         #endregion
 
-        public void draw(PaintEventArgs e)
+        public  void draw(PaintEventArgs e)
         {
             if (Active)
             {
-
+                if (showSightAreas)
+                {
+                    drawAreasOfSight(e);
+                }
+                drawWalls(e);
+                drawAgents(e);
             }
         }
 
-        public void drawAgents(PaintEventArgs e) {
+        private void drawAgents(PaintEventArgs e)
+        {
+            Pen p = new Pen(Color.Black, agentLineWidth);
+            Rectangle rec;
+            int x, y, w, h;
             foreach (Agent agent in board.Agents.getDictionary().Values)
             {
                 double drawRad = 0.005;
-                int x = (int)((agent.coord.x - drawRad / 2.0f) * e.ClipRectangle.Width);
-                int y = (int)((agent.coord.y - drawRad / 2.0f) * e.ClipRectangle.Height);
-                int w = (Int32)(drawRad * e.ClipRectangle.Width);
-                int h = (Int32)(drawRad * e.ClipRectangle.Height);
-                Rectangle rec = new Rectangle(x, y, w, h);
-                Pen p = new Pen(Color.Black, 3);
+                x = (int)((agent.coord.x - drawRad / 2.0f) * e.ClipRectangle.Width);
+                y = (int)((agent.coord.y - drawRad / 2.0f) * e.ClipRectangle.Height);
+                w = (Int32)(drawRad * e.ClipRectangle.Width);
+                h = (Int32)(drawRad * e.ClipRectangle.Height);
+                rec = new Rectangle(x, y, w, h);
                 e.Graphics.DrawEllipse(p, rec);
-                p.Dispose();
+            }
+            p.Dispose();
+        }
+
+        private void drawWalls(PaintEventArgs e) {
+            Pen p = new Pen(Color.Black, wallLineWidth);
+            int x1, y1, x2, y2;
+            foreach (Segment seg in board.Walls.getList())
+            {
+                x1 = (int)(seg.beg.x * e.ClipRectangle.Width);
+                y1 = (int)(seg.beg.y * e.ClipRectangle.Height);
+                x2 = (int)(seg.end.x * e.ClipRectangle.Width);
+                y2 = (int)(seg.end.y * e.ClipRectangle.Height);
+                e.Graphics.DrawLine(p, new Point(x1, y1), new Point(x2, y2));
+            }
+            p.Dispose();
+        }
+
+        private void drawAreasOfSight(PaintEventArgs e)
+        {
+            e.Graphics.Clear(Color.LightGray);
+            Rectangle rec = new Rectangle();
+            Brush br = new SolidBrush(Color.White);
+            foreach (Agent ag in board.Agents.getDictionary().Values)
+            {
+                //draw sight radius
+                rec.X = (Int32)((ag.coord.x - ag.viewRadius) * e.ClipRectangle.Width);
+                rec.Y = (Int32)((ag.coord.y - ag.viewRadius) * e.ClipRectangle.Height);
+                rec.Width = (Int32)(ag.viewRadius * 2 * e.ClipRectangle.Width);
+                rec.Height = (Int32)(ag.viewRadius * 2 * e.ClipRectangle.Height);
+                e.Graphics.FillEllipse(br, rec);
+                //draw communicate radius
+                //rec.X = (Int32)((ag.coord().x - (ag.getCommRadius())) * (double)e.ClipRectangle.Width);
+                //rec.Y = (Int32)((ag.getCoord().y - (ag.getCommRadius())) * (double)e.ClipRectangle.Height);
+                //rec.Width = (Int32)(ag.getCommRadius() * 2f * ((double)e.ClipRectangle.Width));
+                //rec.Height = (Int32)(ag.getCommRadius() * 2f * ((double)e.ClipRectangle.Height));
+                //e.Graphics.DrawEllipse(new Pen(Color.Red, 1f), rec);
             }
         }
 

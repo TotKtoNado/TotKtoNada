@@ -11,8 +11,67 @@ namespace GeneralPackage.Structures
 	using System.Linq;
 	using System.Text;
 
-	public struct Segment
-	{
-	}
+    public struct Segment
+    {
+        public Coord beg;
+        public Coord end;
+
+        public Segment(Coord beg, Coord end)
+        {
+            this.beg = beg;
+            this.end = end;
+        }
+
+        public Segment(double begX, double begY, double endX, double endY)
+        {
+            this.beg = new Coord { x = begX, y = begY };
+            this.end = new Coord { x = endX, y = endY };
+        }
+
+        #region intersects
+
+        public bool intersects(Segment seg)
+        {
+            Coord dir1 = end - beg;
+            Coord dir2 = seg.end - seg.beg;
+
+            //считаем уравнения прямых проходящих через отрезки
+            double a1 = -dir1.y;
+            double b1 = +dir1.x;
+            double d1 = -(a1 * beg.x + b1 * beg.y);
+
+            double a2 = -dir2.y;
+            double b2 = +dir2.x;
+            double d2 = -(a2 * seg.beg.x + b2 * seg.beg.y);
+
+            //подставляем концы отрезков, для выяснения в каких полуплоскотях они
+            double seg1_line2_start = a2 * beg.x + b2 * beg.y + d2;
+            double seg1_line2_end = a2 * end.x + b2 * end.y + d2;
+
+            double seg2_line1_start = a1 * seg.beg.x + b1 * seg.beg.y + d1;
+            double seg2_line1_end = a1 * seg.end.x + b1 * seg.end.y + d1;
+
+            if (lit(seg1_line2_end) || lit(seg1_line2_start) ||
+                lit(seg2_line1_end) || lit(seg2_line1_start))
+            {
+                return true;
+            }
+            //если концы одного отрезка имеют один знак, значит он в одной полуплоскости и пересечения нет.
+            if (seg1_line2_start * seg1_line2_end >= 0 || seg2_line1_start * seg2_line1_end >= 0)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        private static bool lit(double fl)// Less then epsilon
+        {
+            return (Math.Abs(fl) < double.Epsilon);
+        }
+
+#endregion
+
+    }
+
 }
 

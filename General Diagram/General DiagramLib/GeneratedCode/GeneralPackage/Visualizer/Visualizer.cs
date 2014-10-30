@@ -16,7 +16,7 @@ namespace GeneralPackage.Visualizer
 	{
         protected Board board;
 
-        protected Visualizer(ref Board board)
+        protected Visualizer(Board board)
         {
             this.board = board;
         }

@@ -6,24 +6,24 @@
   <MessageClass Name="Error" Label="Ошибка" Option="Показывать ошибки" />
   <MessageClass Name="Property" Label="Свойство" Option="Показывать метаданные" />
   <MessageClass Name="Diagnostic" Label="Сообщение" Option="Показывать диагностические сообщения" />
-  <Message Timestamp="2014-09-25T14:45:15" Importance="High" Text="Запущено создание кода или преобразование текста." />
-  <Message Timestamp="2014-09-25T14:45:15" Importance="Diagnostic" Text="Имя = ClassTemplate" />
-  <Message Timestamp="2014-09-25T14:45:15" Importance="Diagnostic" Text="Перезаписать = True" />
-  <Message Timestamp="2014-09-25T14:45:15" Importance="Diagnostic" Text="ProjectPath = ..\General DiagramLib\General DiagramLib.csproj" />
-  <Message Timestamp="2014-09-25T14:45:15" Importance="Diagnostic" Text="TargetDirectory = GeneratedCode\{PackageStructure}" />
-  <Message Timestamp="2014-09-25T14:45:15" Importance="Diagnostic" Text="TargetName = {Name}" />
-  <Message Timestamp="2014-09-25T14:45:15" Importance="Diagnostic" Text="TemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\ClassTemplate.t4" />
-  <Message Timestamp="2014-09-25T14:45:15" Importance="Diagnostic" Text="ResolvedTemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\ClassTemplate.t4" />
-  <Message Timestamp="2014-09-25T14:45:15" Importance="Medium" Text="Привязка шаблона текста, принадлежащая General Diagram: &quot;ClassTemplate&quot; применит ClassTemplate.t4 к: &quot;General Diagram::GeneralPackage::Visualizer::CommonFormVisualizer&quot; -  (Class) " />
-  <Message Timestamp="2014-09-25T14:45:17" Importance="Medium" Text="&quot;General Diagram::GeneralPackage::Visualizer::CommonFormVisualizer&quot; -  (Class) : успешно (файл заменен) - C:\Users\ТотКтоНада\Documents\GitHub\TotKtoNada\General Diagram\General DiagramLib\GeneratedCode\GeneralPackage\Visualizer\CommonFormVisualizer.cs" />
-  <Message Timestamp="2014-09-25T14:45:17" Importance="Diagnostic" Text="Имя = StructTemplate" />
-  <Message Timestamp="2014-09-25T14:45:17" Importance="Diagnostic" Text="Перезаписать = True" />
-  <Message Timestamp="2014-09-25T14:45:17" Importance="Diagnostic" Text="ProjectPath = ..\General DiagramLib\General DiagramLib.csproj" />
-  <Message Timestamp="2014-09-25T14:45:17" Importance="Diagnostic" Text="TargetDirectory = GeneratedCode\{PackageStructure}" />
-  <Message Timestamp="2014-09-25T14:45:17" Importance="Diagnostic" Text="TargetName = {Name}" />
-  <Message Timestamp="2014-09-25T14:45:17" Importance="Diagnostic" Text="TemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\StructTemplate.t4" />
-  <Message Timestamp="2014-09-25T14:45:17" Importance="Diagnostic" Text="ResolvedTemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\StructTemplate.t4" />
-  <Message Timestamp="2014-09-25T14:45:17" Importance="Medium" Text="Привязка шаблона текста, принадлежащая General Diagram: &quot;StructTemplate&quot; применит StructTemplate.t4 к: &quot;General Diagram::GeneralPackage::Visualizer::CommonFormVisualizer&quot; -  (Class) " />
-  <Message Timestamp="2014-09-25T14:45:17" Importance="Diagnostic" Text="&quot;General Diagram::GeneralPackage::Visualizer::CommonFormVisualizer&quot; -  (Class): файлы не созданы, поскольку метод AppliesToElement шаблона &quot;StructTemplate.t4&quot; возвратил значение false." />
-  <Message Timestamp="2014-09-25T14:45:17" Importance="High" Text="Создание кода завершено. Ошибок: 0. Предупреждений: 0." />
+  <Message Timestamp="2014-10-27T15:33:36" Importance="High" Text="Запущено создание кода или преобразование текста." />
+  <Message Timestamp="2014-10-27T15:33:37" Importance="Diagnostic" Text="Имя = ClassTemplate" />
+  <Message Timestamp="2014-10-27T15:33:37" Importance="Diagnostic" Text="Перезаписать = True" />
+  <Message Timestamp="2014-10-27T15:33:37" Importance="Diagnostic" Text="ProjectPath = ..\General DiagramLib\General DiagramLib.csproj" />
+  <Message Timestamp="2014-10-27T15:33:37" Importance="Diagnostic" Text="TargetDirectory = GeneratedCode\{PackageStructure}" />
+  <Message Timestamp="2014-10-27T15:33:37" Importance="Diagnostic" Text="TargetName = {Name}" />
+  <Message Timestamp="2014-10-27T15:33:37" Importance="Diagnostic" Text="TemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\ClassTemplate.t4" />
+  <Message Timestamp="2014-10-27T15:33:37" Importance="Diagnostic" Text="ResolvedTemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\ClassTemplate.t4" />
+  <Message Timestamp="2014-10-27T15:33:37" Importance="Medium" Text="Привязка шаблона текста, принадлежащая General Diagram: &quot;ClassTemplate&quot; применит ClassTemplate.t4 к: &quot;General Diagram::GeneralPackage::Manager::Manager&quot; -  (Class) " />
+  <Message Timestamp="2014-10-27T15:33:38" Importance="Medium" Text="&quot;General Diagram::GeneralPackage::Manager::Manager&quot; -  (Class) : успешно (файл заменен) - C:\Users\ТотКтоНада\Documents\GitHub\TotKtoNada\General Diagram\General DiagramLib\GeneratedCode\GeneralPackage\Manager\Manager.cs" />
+  <Message Timestamp="2014-10-27T15:33:38" Importance="Diagnostic" Text="Имя = StructTemplate" />
+  <Message Timestamp="2014-10-27T15:33:38" Importance="Diagnostic" Text="Перезаписать = True" />
+  <Message Timestamp="2014-10-27T15:33:38" Importance="Diagnostic" Text="ProjectPath = ..\General DiagramLib\General DiagramLib.csproj" />
+  <Message Timestamp="2014-10-27T15:33:38" Importance="Diagnostic" Text="TargetDirectory = GeneratedCode\{PackageStructure}" />
+  <Message Timestamp="2014-10-27T15:33:38" Importance="Diagnostic" Text="TargetName = {Name}" />
+  <Message Timestamp="2014-10-27T15:33:38" Importance="Diagnostic" Text="TemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\StructTemplate.t4" />
+  <Message Timestamp="2014-10-27T15:33:38" Importance="Diagnostic" Text="ResolvedTemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\StructTemplate.t4" />
+  <Message Timestamp="2014-10-27T15:33:38" Importance="Medium" Text="Привязка шаблона текста, принадлежащая General Diagram: &quot;StructTemplate&quot; применит StructTemplate.t4 к: &quot;General Diagram::GeneralPackage::Manager::Manager&quot; -  (Class) " />
+  <Message Timestamp="2014-10-27T15:33:38" Importance="Diagnostic" Text="&quot;General Diagram::GeneralPackage::Manager::Manager&quot; -  (Class): файлы не созданы, поскольку метод AppliesToElement шаблона &quot;StructTemplate.t4&quot; возвратил значение false." />
+  <Message Timestamp="2014-10-27T15:33:38" Importance="High" Text="Создание кода завершено. Ошибок: 0. Предупреждений: 0." />
 </Log>

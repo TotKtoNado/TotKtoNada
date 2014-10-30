@@ -134,7 +134,7 @@
       </package>
     </logicalClassDesignerModelHasPackages>
     <logicalClassDesignerModelHasPackages>
-      <package Id="4e5c3b15-7daf-4b79-a8f2-ee9fcf44ab0a" name="FormInterface">
+      <package Id="4e5c3b15-7daf-4b79-a8f2-ee9fcf44ab0a" name="Manager">
         <elementDefinition Id="77602009-2978-4961-92cd-d3f899450475" />
         <suppliersInternal>
           <dependency Id="e3d557d6-e404-4efe-82d7-293a7f60caa9">

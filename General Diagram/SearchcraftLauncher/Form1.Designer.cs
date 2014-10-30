@@ -43,6 +43,7 @@
             this.MainScreen.TabIndex = 0;
             this.MainScreen.TabStop = false;
             this.MainScreen.Click += new System.EventHandler(this.MainScreen_Click);
+            this.MainScreen.Paint += new System.Windows.Forms.PaintEventHandler(this.MainScreen_Paint);
             // 
             // tableLayoutPanel1
             // 

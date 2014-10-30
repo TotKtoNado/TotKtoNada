@@ -41,11 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GeneratedCode\GeneralPackage\Controller\AgentController.cs" />
+    <Compile Include="GeneratedCode\GeneralPackage\Controller\IWalker.cs" />
     <Compile Include="GeneratedCode\GeneralPackage\GameData\Agent.cs" />
     <Compile Include="GeneratedCode\GeneralPackage\GameData\AgentList.cs" />
     <Compile Include="GeneratedCode\GeneralPackage\GameData\Board.cs" />
     <Compile Include="GeneratedCode\GeneralPackage\GameData\Eventer.cs" />
     <Compile Include="GeneratedCode\GeneralPackage\GameData\WallList.cs" />
+    <Compile Include="GeneratedCode\GeneralPackage\Manager\Manager.cs" />
+    <Compile Include="GeneratedCode\GeneralPackage\Performer\CommandPerformer.cs" />
+    <Compile Include="GeneratedCode\GeneralPackage\Structures\AgentCutaway.cs" />
     <Compile Include="GeneratedCode\GeneralPackage\Structures\AgentType.cs" />
     <Compile Include="GeneratedCode\GeneralPackage\Structures\Average.cs" />
     <Compile Include="GeneratedCode\GeneralPackage\Structures\WallType.cs" />

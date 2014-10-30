@@ -10,6 +10,7 @@ namespace GeneralPackage.GameData
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Text;
+    using GeneralPackage.Structures;
 
 	public class AgentList
 	{
@@ -24,7 +25,7 @@ namespace GeneralPackage.GameData
             {
                 if (!list.ContainsKey(i))
                 {
-                    i = i + 1;
+                    lastCandidate = i + 1;
                     return i;
                 }
             }
@@ -64,7 +65,7 @@ namespace GeneralPackage.GameData
         }
         #endregion
 
-        internal void launchAgents()
+        public void launchAgents()
         {
             foreach (Agent ag in list.Values)
             {
@@ -78,11 +79,32 @@ namespace GeneralPackage.GameData
             return list;
         }
 
+        
+
+        internal Agent this[int i]
+        {
+            get { return list[i]; }
+        }
 
         #endregion
 
+        #region adding Agents
 
+        public int addCustomAgent(Coord startCoord, Eventer eventHandler,
+                                    double speed, double viewRadius)
+        {
+            int i = getNewIndex();
+            list.Add(i, new Agent(eventHandler, i, speed, viewRadius, startCoord));
+            return i;
+        }
 
+        public void addTestAgent()
+        {
+            int i = getNewIndex();
+            list.Add(i, new Agent(new Eventer(), i, 0.0, 0.1, Coord.rand()));
+        }
+
+        #endregion
     }
 }
 
