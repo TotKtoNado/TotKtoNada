@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GeneratedCode\GeneralPackage\Controller\AgentController.cs" />
+    <Compile Include="GeneratedCode\GeneralPackage\Controller\ControllerSet.cs" />
+    <Compile Include="GeneratedCode\GeneralPackage\Controller\ISensor.cs" />
     <Compile Include="GeneratedCode\GeneralPackage\Controller\IWalker.cs" />
     <Compile Include="GeneratedCode\GeneralPackage\GameData\Agent.cs" />
     <Compile Include="GeneratedCode\GeneralPackage\GameData\AgentList.cs" />

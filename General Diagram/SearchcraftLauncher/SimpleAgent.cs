@@ -14,8 +14,8 @@ namespace SearchcraftLauncher
         private IWalker com;
         bool seted = false;
 
-        public void setController(IWalker com_) {
-            com = com_;
+        public void setController(ControllerSet com_) {
+            com = com_.iWalker;
             seted = true;
         }
 
@@ -23,7 +23,7 @@ namespace SearchcraftLauncher
         {
             if (seted)
             {
-                System.Console.Write(com.makeStep(new Coord(1.0, 0), 0.9));
+                com.makeStep(new Coord(1.0, 0), 0.9);
             }
         }
     }

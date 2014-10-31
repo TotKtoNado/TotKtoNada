@@ -16,6 +16,7 @@ namespace GeneralPackage.GameData
     {
 
         #region constructor
+
         internal Agent(Eventer eventHadler, int ID)
         {
             this.eventer = eventHadler;
@@ -23,14 +24,18 @@ namespace GeneralPackage.GameData
             coord = Coord.rand();
             speed = Average.speed;
             viewRadius = Average.viewRadius;
+            type = AgentType.Dummy;
         }
-        internal Agent(Eventer eventHandler, int ID, double speed, double viewRadius, Coord coord)
+
+        internal Agent(Eventer eventHandler, int ID, double speed, double viewRadius, Coord coord, 
+                        AgentType type)
         {
             this.eventer = eventHandler;
             this.id = ID;
             this.speed = speed;
             this.coord = coord;
             this.viewRadius = viewRadius;
+            this.type = type;
         }
            
 
@@ -72,13 +77,24 @@ namespace GeneralPackage.GameData
 			set;
 		}
 
+        public AgentType type {
+            get;
+            set;
+        }
+
         private int id;
         private Eventer eventer;
+
         #endregion
 
         public void deleted()
         {
             eventer.deleted();
+        }
+
+        public AgentCutaway getCutaway()
+        {
+            return new AgentCutaway { ID = this.id, coord = this.coord, type = this.type };
         }
     }
 }

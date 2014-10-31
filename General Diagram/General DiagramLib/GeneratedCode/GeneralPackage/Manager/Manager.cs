@@ -6,7 +6,6 @@
 //------------------------------------------------------------------------------
 namespace GeneralPackage.Manager
 {
-	using GeneralPackage.Controller;
 	using System;
 	using System.Collections.Generic;
 	using System.Linq;
@@ -22,11 +21,11 @@ namespace GeneralPackage.Manager
 
         #region attributes
 
-        private Board board
+        public Board board
 		{
 			get;
 			set;
-        }
+        }   //TODO: switch public to private
 
         private CommandPerformer performer{
             get;
@@ -55,13 +54,16 @@ namespace GeneralPackage.Manager
 
         #region adding agents
 
-        public AgentController addCustomAgent(Coord startCoord, Eventer eventHandler,
+        public ControllerSet addCustomAgent(Coord startCoord, Eventer eventHandler,
                                     double speed, double viewRadius)
         {
             int ID;
             ID = board.Agents.addCustomAgent(startCoord, eventHandler, speed, viewRadius);
-            return new AgentController(performer, ID);
+            AgentController cntrl = new AgentController(performer, ID);
+            return new ControllerSet { iWalker = cntrl };
+            //return new AgentController(performer, ID);
         }
+
 
         public void addTestAgent()
         {
@@ -89,6 +91,86 @@ namespace GeneralPackage.Manager
         }
 
         #endregion
+
+        #region отладка
+        /*
+        public Segment[] wallsAround(int agentID) //Отладить и удалить TODO:
+        {
+            List<Segment> list = new List<Segment>();
+            List<Coord> sorter = new List<Coord>();
+            IReadOnlyDictionary<int, Agent> dict = board.Agents.getDictionary();
+            Coord c = dict[agentID].coord, beg, end;
+            double R = dict[agentID].viewRadius;
+            double K, C, B, X, Y;
+            Segment temp = new Segment();
+            foreach (Segment wall in board.Walls.getList())
+            {
+                beg = wall.beg - c;
+                end = wall.end - c;
+                if (beg.x != end.x)
+                {
+                    K = (beg.y - end.y) / (beg.x - end.x);
+                    C = beg.y - K * beg.x;
+                    B = K * K + 1;
+                    if (R * R - C * C + K * K * R * R > 0)
+                    {
+                        X = (Math.Sqrt(-C * C + K * K * R * R + R * R) - K * C) / B;
+                        Y = K * X + C;
+                        temp.end.x = X + c.x;
+                        temp.end.y = Y + c.y;
+                        X = (-Math.Sqrt(-C * C + K * K * R * R + R * R) - K * C) / B;
+                        Y = K * X + C;
+                        temp.beg.x = X + c.x;
+                        temp.beg.y = Y + c.y;
+
+                        if (wall.beg.x < temp.beg.x && wall.end.x < temp.beg.x ||
+                            wall.beg.x > temp.end.x && wall.end.x > temp.end.x)
+                        {
+
+                        }
+                        else
+                        {
+                            sorter.Clear();
+                            sorter.Add(wall.beg);
+                            sorter.Add(wall.end);
+                            sorter.Add(temp.beg);
+                            sorter.Add(temp.end);
+                            sorter.Sort((dot1, dot2) => dot1.x.CompareTo(dot2.x));
+                            list.Add(new Segment(sorter[1], sorter[2]));
+                        }
+                    }
+                }
+                else
+                {
+                    if (R > beg.x)
+                    {
+                        X = beg.x;
+                        Y = Math.Sqrt(R * R - X * X);
+                        temp.end = new Coord { x = X + c.x, y = Y + c.y };
+                        temp.beg = new Coord { x = X + c.x, y = -Y + c.y };
+                        if (wall.beg.y < temp.beg.y && wall.end.y < temp.beg.y ||
+                            wall.beg.y > temp.end.y && wall.end.y > temp.end.y)
+                        {
+
+                        }
+                        else
+                        {
+                            sorter.Clear();
+                            sorter.Add(wall.beg);
+                            sorter.Add(wall.end);
+                            sorter.Add(temp.beg);
+                            sorter.Add(temp.end);
+                            sorter.Sort((dot1, dot2) => dot1.y.CompareTo(dot2.y));
+                            list.Add(new Segment(sorter[1], sorter[2]));
+                        }
+                    }
+                }
+            }
+            return list.ToArray();
+        }
+        */
+        #endregion
+
     }
 }
 

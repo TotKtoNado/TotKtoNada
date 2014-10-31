@@ -1179,5 +1179,42 @@
         </ownedAttributesInternal>
       </class>
     </packageHasNamedElement>
+    <packageHasNamedElement>
+      <enumeration
+        Id="6f814352-a7c5-438b-b7da-828b30e044fb"
+        name="GameObjectType"
+        isAbstract="false"
+        isLeaf="false">
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="f9bd30fa-3ea9-4247-9f87-fc3a7bc78104"
+            name="enum"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="ad5b7753-babb-4de2-a53e-2315d9363d7c">
+                <propertyInstance
+                  Id="fbc76582-cd77-4129-b595-2de2f9fc2481"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="9bcae766-b664-44bd-b403-fab1e0e10afb">
+                <propertyInstance
+                  Id="6f51e259-82ec-4a7f-9ac6-9b02bac08418"
+                  name="BaseType"
+                  value="int" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="e132e594-380b-4588-a5fb-479e19d50c43">
+                <propertyInstance
+                  Id="57198bec-cf74-43a9-aabc-b3488455e2b6"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </enumeration>
+    </packageHasNamedElement>
   </packagedElements>
 </package>

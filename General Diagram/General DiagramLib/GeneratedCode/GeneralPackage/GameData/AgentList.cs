@@ -94,14 +94,14 @@ namespace GeneralPackage.GameData
                                     double speed, double viewRadius)
         {
             int i = getNewIndex();
-            list.Add(i, new Agent(eventHandler, i, speed, viewRadius, startCoord));
+            list.Add(i, new Agent(eventHandler, i, speed, viewRadius, startCoord,AgentType.CommonSearcher));
             return i;
         }
 
         public void addTestAgent()
         {
             int i = getNewIndex();
-            list.Add(i, new Agent(new Eventer(), i, 0.0, 0.1, Coord.rand()));
+            list.Add(i, new Agent(new Eventer(), i, 0.0, 0.1, Coord.rand(),AgentType.Dummy));
         }
 
         #endregion

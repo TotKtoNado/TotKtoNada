@@ -13,7 +13,8 @@ namespace GeneralPackage.Structures
 
 	public enum AgentType
 	{
-		CommonSearcher,
+		Dummy,
+        CommonSearcher,
 		SearchTarget
 	}
 }

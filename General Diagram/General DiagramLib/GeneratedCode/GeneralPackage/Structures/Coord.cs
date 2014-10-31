@@ -76,6 +76,11 @@ namespace GeneralPackage.Structures
             return (x <= 1.0 && x >= 0.0 && y <= 1.0 && y >= 0.0);
         }
 
+        public double norm()
+        {
+            return Math.Sqrt(x * x + y * y);
+        }
+
 
     }
 }

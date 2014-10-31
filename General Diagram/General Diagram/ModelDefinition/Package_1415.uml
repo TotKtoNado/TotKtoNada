@@ -142,6 +142,45 @@
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
+          <association
+            Id="2e72fa29-cff2-4926-9aa1-eb7af6853cb1"
+            isDerived="false"
+            sourceEndRoleName="Board"
+            targetEndRoleName="ObjectList"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="b84d70d2-46b8-4dfe-ae15-117ed689a1da"
+              LastKnownName="ObjectList"
+              LastKnownLocation="Package_1415.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="52d4eaae-b71b-470f-a02d-2b152124bba2"
+                  name="Board"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Composite"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="a6995f68-8cd5-48a3-b372-14531b41f668"
+                  name="ObjectList"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="true" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
         </targetEnds>
       </class>
     </packageHasNamedElement>
@@ -795,6 +834,101 @@
       <undefinedType
         Id="ae29364e-0a45-42ec-a9f6-7115f038fcc3"
         name="Coord" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="b84d70d2-46b8-4dfe-ae15-117ed689a1da"
+        name="ObjectList"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="1034acf8-48cb-4b06-8968-8e8f456995ba"
+            isDerived="false"
+            sourceEndRoleName="ObjectList"
+            targetEndRoleName="SearchObject"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="e42a3dd7-aab9-4037-85ae-6b4a34e7220c"
+              LastKnownName="SearchObject"
+              LastKnownLocation="Package_1415.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="cbbf9878-27cc-47db-8ede-9a272ddc4683"
+                  name="ObjectList"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Shared"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="5797e0da-f93e-44a2-a6e9-b88ced3be12d"
+                  name="SearchObject"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="e42a3dd7-aab9-4037-85ae-6b4a34e7220c"
+        name="SearchObject"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="f6460e38-a0c0-4350-a002-64509554d306"
+            name="struct"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="912636cb-4219-4001-930e-281838fa96c4">
+                <propertyInstance
+                  Id="c18f3c80-6d1c-43cc-8d5a-5123a1accb86"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="5bc7a2a5-e773-4bd1-80f5-4b4237bf555f">
+                <propertyInstance
+                  Id="aafda3a5-1535-4a8f-afef-f15ad9f7307f"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="a8b2052c-1eff-4274-a47a-7fd686dff0ca">
+                <propertyInstance
+                  Id="f92e7897-0a52-4b2b-b183-9a94b000bd4b"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="778df7de-d31a-49e7-9488-85c72f4c510f">
+                <propertyInstance
+                  Id="68bccf19-c4e0-4b2b-ab80-445056a85fe3"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
     </packageHasNamedElement>
   </packagedElements>
 </package>

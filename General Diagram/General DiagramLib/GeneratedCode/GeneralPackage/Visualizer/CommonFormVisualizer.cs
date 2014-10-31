@@ -123,6 +123,24 @@ namespace GeneralPackage.Visualizer
             }
         }
 
+        #region Для отладки
+        /*
+        public void drawCustomWalls(PaintEventArgs e, Segment[] walls) 
+        {
+            Pen p = new Pen(Color.Red, wallLineWidth);
+            int x1, y1, x2, y2;
+            foreach (Segment seg in walls)
+            {
+                x1 = (int)(seg.beg.x * e.ClipRectangle.Width);
+                y1 = (int)(seg.beg.y * e.ClipRectangle.Height);
+                x2 = (int)(seg.end.x * e.ClipRectangle.Width);
+                y2 = (int)(seg.end.y * e.ClipRectangle.Height);
+                e.Graphics.DrawLine(p, new Point(x1, y1), new Point(x2, y2));
+            }
+            p.Dispose();
+        }
+        */
+        #endregion
     }
 }
 

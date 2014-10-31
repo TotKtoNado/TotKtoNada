@@ -13,7 +13,7 @@ namespace GeneralPackage.Controller
 	using System.Text;
     using Structures;
 
-	public class AgentController : IWalker
+	public class AgentController : IWalker, ISensor
     {
 
         #region attributes
@@ -50,6 +50,14 @@ namespace GeneralPackage.Controller
 
         #endregion
 
+        #region ISensor
+
+        AgentCutaway[] ISensor.agentsAround()
+        {
+            return performer.agentsAround(ID);
+        }
+
+        #endregion
 
 
 
